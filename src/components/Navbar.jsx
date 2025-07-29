@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -12,32 +13,33 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="logo">Puvankopis</div>
-        
+        <div ><Link to='/' className="logo">Puvankopis</Link></div>
+
         {/* ------------ Desktop Navigation ------------ */}
         <div className="desktop-links">
-          <a href="#about" className="nav-link">About</a>
-          <a href="#skills" className="nav-link">Skills</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <div><Link className='nav-link' to='/about'>About</Link></div>
+          <div><Link className='nav-link' to='/skills'>Skills</Link></div>
+          <div><Link className='nav-link' to='/projects'>Projects</Link></div>
+          <div><Link className='nav-link' to='/contact'>Contact</Link></div>
         </div>
-        
+
         {/* ------------ Mobile Hamburger Icon ------------ */}
-        <div 
-          className={`hamburger ${isOpen ? 'open' : ''}`} 
+        <div
+          className={`hamburger ${isOpen ? 'open' : ''}`}
           onClick={toggleMenu}
         >
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
         </div>
-        
+
         {/* ------------ Mobile Navigation ------------ */}
         <div className={`mobile-links ${isOpen ? 'open' : ''}`}>
-          <a href="#about" className="mobile-link" onClick={toggleMenu}>About</a>
-          <a href="#skills" className="mobile-link" onClick={toggleMenu}>Skills</a>
-          <a href="#projects" className="mobile-link" onClick={toggleMenu}>Projects</a>
-          <a href="#contact" className="mobile-link" onClick={toggleMenu}>Contact</a>
+          <div onClick={toggleMenu}><Link className='nav-link' to='/'>Home</Link></div>
+          <div onClick={toggleMenu}><Link className='nav-link' to='/about'>About</Link></div>
+          <div onClick={toggleMenu}><Link className='nav-link' to='/skills'>Skills</Link></div>
+          <div onClick={toggleMenu}><Link className='nav-link' to='/projects'>Projects</Link></div>
+          <div onClick={toggleMenu}><Link className='nav-link' to='/contact'>Contact</Link></div>
         </div>
       </div>
     </nav>
