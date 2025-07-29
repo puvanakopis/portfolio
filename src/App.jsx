@@ -1,8 +1,13 @@
+import './App.css'
+
+// import components
+import Navbar from "./components/Navbar"
+
 function App() {
 
   return (
     <>
-      Puvanakopis
+      <Navbar />
     </>
   )
 }
