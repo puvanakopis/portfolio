@@ -110,7 +110,7 @@
 }
 
 /* ------------- Responsive ------------- */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .home {
         flex-direction: column;
         height: auto;
@@ -146,8 +146,7 @@
     }
 
     .home .home-image img {
-        width: 80%;
+        width: 60%;
         height: auto;
-        max-height: 500px;
     }
 }

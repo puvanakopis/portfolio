@@ -24,7 +24,7 @@ body {
 }
 
 
-/* --------- Heading --------- 1 */
+/* --------- Heading 1 --------- */
 h1 {
   font-size: 40px !important;
   font-weight: 500 !important;
@@ -40,12 +40,14 @@ h2 {
 
 /* --------- button --------- */
 .btn-light {
+  background-color: var(--bg-color) !important;
+  color: var(--primary-color) !important;
   border: 2px solid var(--primary-color);
 }
 
 .btn-light:hover {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--primary-color) !important;
+  color: var(--bg-color) !important;
 }
 
 .btn-dark {
@@ -67,12 +69,14 @@ h2 {
   padding: 12px 20px;
   border-radius: 50px;
   transition: all 0.3s ease;
+  cursor: pointer;
+  width: fit-content !important;
 }
 
 
 
 
----------
+
 @media (max-width: 1024px) and (min-width: 768px) {
   body {
     font-size: 20px !important;
@@ -85,11 +89,17 @@ h2 {
   h2 {
     font-size: 30px !important;
   }
+
+  .btn {
+    font-size: 20px !important;
+  }
 }
 
 @media (max-width: 768px) and (min-width: 480px) {
   body {
     font-size: 18px !important;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
   h1 {
@@ -98,6 +108,10 @@ h2 {
 
   h2 {
     font-size: 25px !important;
+  }
+
+  .btn {
+    font-size: 14px !important;
   }
 }
 
@@ -112,5 +126,9 @@ h2 {
 
   h2 {
     font-size: 20px !important;
+  }
+
+  .btn {
+    font-size: 13px !important;
   }
 }

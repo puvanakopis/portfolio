@@ -1,0 +1,237 @@
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.projects-container-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* --------------- Projects container --------------- */
+.projects-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: calc(100% - 100px);
+    overflow: hidden;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+/* --------------- Project Card --------------- */
+.project-card {
+    background-color: var(--bg-color-2);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 65vh;
+    width: 100%;
+    max-width: 60vh;
+    min-width: 280px;
+    border: 2px solid var(--primary-color);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Project Image */
+.project-image img {
+    width: 100%;
+    height: 35vh;
+    object-fit: cover;
+}
+
+/* Project Content */
+.project-content {
+    height: 25vh;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-content .project-title {
+    padding: 15px 0 !important;
+    margin: 0 !important;
+    font-size: 1.5rem;
+    gap: 0 !important;
+}
+
+.project-content .project-description {
+    font-size: 1rem;
+    padding: 5px 0 !important;
+    margin: 0 !important;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 5px 0 !important;
+    margin: 0 !important;
+}
+
+.project-tags span {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.project-buttons {
+    padding: 1rem 10% !important;
+    margin: 0 !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-project {
+    font-size: 1rem;
+    padding: 0.4rem 1rem !important;
+    border-radius: 5px;
+}
+
+
+/* --------------- Arrow button --------------- */
+.carousel-button {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-button:hover {
+    transform: translateY(-50%) scale(1.2);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+/* --------------- Dot indicators --------------- */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #bbb;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+/* ------------- Responsive styles ------------- */
+@media (max-width: 1024px) {
+    .projects-container {
+        width: calc(100% - 80px);
+    }
+
+
+    .project-card {
+        max-width: 450px;
+        height: 70vh;
+    }
+
+    .project-content h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects {
+        padding: 30px 15px;
+        min-height: auto;
+    }
+
+    .projects-container {
+        width: calc(100% - 60px);
+    }
+
+    .carousel-button {
+        font-size: 2rem;
+    }
+
+    .project-card {
+        min-height: 450px;
+    }
+
+    .project-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-content p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-container {
+        width: calc(100% - 40px);
+    }
+
+    .carousel-button {
+        font-size: 1.8rem;
+        padding: 5px;
+    }
+
+    .project-card {
+        min-width: 250px;
+        min-height: 400px;
+    }
+
+    .project-content {
+        padding: 1rem;
+    }
+
+    .project-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .carousel-dots {
+        margin-top: 20px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+}
