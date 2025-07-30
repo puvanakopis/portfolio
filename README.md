@@ -1,12 +1,67 @@
-# React + Vite
+# Puvankopis - Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+A modern, responsive portfolio website showcasing my skills, projects, and professional information as a full-stack developer with AI/ML expertise.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Responsive Design** – Works seamlessly across devices (mobile, tablet, desktop)
+- **Interactive Components**:
+  - Animated typing effect on the homepage
+  - Skill progress bars with animations
+  - Project carousel with touch support
+- **Multi-page Navigation**:
+  - Home
+  - About Me
+  - Skills
+  - Projects
+  - Contact
+- **Social Media Integration** – Quick access to professional profiles
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+- React.js
+- React Router
+- CSS3 (custom animations)
+- Responsive Design with Flexbox/Grid
+
+
+
+## 📂 Website Sections
+
+### 1. Home
+- Animated typing effect
+- Social media links
+- CV download button
+- Contact button
+
+### 2. About
+- Bio and background
+- Personal information
+- Education details
+
+### 3. Skills
+- Categorized skill bars
+- Smooth animations
+- Carousel for grouped skills
+
+### 4. Projects
+- Visual project showcase
+- Tech stack tags
+- Live demo & GitHub links
+- Responsive slider
+
+### 5. Contact
+- Contact details
+- Functional contact form
+- Linked social icons
+
+---
+
+## 🌐 Live Preview
+<img width="1920" height="982" alt="puvanakopis" src="https://github.com/user-attachments/assets/dfb14a66-8711-4caa-929f-122446ae749a" />
