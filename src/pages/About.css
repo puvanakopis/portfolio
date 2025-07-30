@@ -1,0 +1,121 @@
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 3rem;
+}
+
+/* ------------ Profile image ------------ */
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ------------ About content ------------ */
+.about-content {
+    flex: 1;
+}
+
+/* about paragraphs */
+.about-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* personal details */
+.about-details {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+}
+
+.about-details .detail-item span {
+    font-weight: 600;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+.about-details .detail-item p {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+/* ------------- Responsive ------------- */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .about-image {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .about-image img {
+        max-width: 300px;
+    }
+
+    .about-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .about-details {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .detail-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-image img {
+        max-width: 250px;
+    }
+
+    .about-text p {
+        font-size: 0.9rem;
+    }
+}

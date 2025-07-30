@@ -1,22 +1,39 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
-
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // logo text based on path
+  const getLogoText = () => {
+    switch (location.pathname) {
+      case '/about':
+        return 'About Me';
+      case '/skills':
+        return 'My Skills';
+      case '/projects':
+        return 'My Projects';
+      case '/contact':
+        return 'Contact Me';
+      default:
+        return 'Puvankopis';
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div ><Link to='/' className="logo">Puvankopis</Link></div>
+        <div className="logo">{getLogoText()}</div>
 
         {/* ------------ Desktop Navigation ------------ */}
         <div className="desktop-links">
+          <div><Link className='nav-link' to='/'>Home</Link></div>
           <div><Link className='nav-link' to='/about'>About</Link></div>
           <div><Link className='nav-link' to='/skills'>Skills</Link></div>
           <div><Link className='nav-link' to='/projects'>Projects</Link></div>
