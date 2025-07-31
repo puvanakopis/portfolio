@@ -68,7 +68,7 @@ const Skills = () => {
     const maxIndex = Math.max(0, skillCategories.length - cardsToShow);
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % (maxIndex + 1));
-    }, 7000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [skillCategories.length, cardsToShow]);
 

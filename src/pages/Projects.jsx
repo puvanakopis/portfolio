@@ -68,7 +68,7 @@ const Projects = () => {
             if (isAutoPlaying) {
                 interval = setInterval(() => {
                     setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-                }, 5000); // Changed to 5 seconds for better UX
+                }, 4000);
             }
         };
 

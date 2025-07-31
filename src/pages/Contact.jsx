@@ -1,4 +1,5 @@
 import './Contact.css';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Contact = () => {
   return (
@@ -9,14 +10,23 @@ const Contact = () => {
 
           <div className="contact-info">
             <div className="info-item">
+              <div className="info-icon">
+                <FaEnvelope />
+              </div>
               <h3>Email</h3>
               <p>puvanakopis@gmail.com</p>
             </div>
             <div className="info-item">
+              <div className="info-icon">
+                <FaPhone />
+              </div>
               <h3>Phone</h3>
               <p>+94 75 46 14 044</p>
             </div>
             <div className="info-item">
+              <div className="info-icon">
+                <FaMapMarkerAlt />
+              </div>
               <h3>Location</h3>
               <p>Batticaloa, Sri Lanka</p>
             </div>

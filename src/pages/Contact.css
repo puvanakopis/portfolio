@@ -3,6 +3,7 @@
     align-items: center;
     height: 85vh;
     width: 100%;
+    padding-top: 15vh !important;
 }
 
 /* ------------ Contact Info ------------ */
@@ -33,6 +34,19 @@
     font-size: 1.1rem;
 }
 
+.info-item {
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 40px;
+}
+
+.info-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
 
 
 /* ------------ Contact Form ------------ */
@@ -69,10 +83,22 @@
         flex-direction: column;
         height: auto;
         gap: 40px;
+        padding-bottom: 5vh;
+
     }
 
     .info-container {
         text-align: center;
+    }
+
+    .info-item {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .info-icon {
+        position: relative;
+        margin-bottom: 10px;
     }
 
     .info-container,

@@ -1,15 +1,22 @@
 .navbar {
-    height: 15vh;
-    width: 100%;
+    display: flex;
+    height: 10vh;
+    padding: 0 !important;
+    width: 80%;
+    position: fixed;
+    top: 0%;
+    left: 10%;
     z-index: 1000;
+    background-color: var(--bg-color);
+    position: fixed;
 }
 
 .navbar .navbar-container {
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    margin: 0 auto;
+    padding: 10px 0 0 0;
 }
 
 .navbar .logo {
@@ -19,7 +26,18 @@
     font-weight: 800;
     color: var(--primary-color);
     z-index: 1001;
+    transition: all 0.3s ease;
+
 }
+
+.logo.fade-out {
+    opacity: 0;
+}
+
+.logo.fade-in {
+    opacity: 1;
+}
+
 
 /* ------------ Desktop Navigation ------------ */
 .navbar .desktop-links {
@@ -33,6 +51,7 @@
     transition: color var(--transition-speed) ease;
     position: relative;
     padding: 0.5rem 0;
+    cursor: pointer;
 }
 
 .navbar .nav-link:hover {
@@ -127,8 +146,16 @@
 
 /* ------------ Responsive Design ------------ */
 @media (max-width: 1024px) and (min-width: 480px) {
+    .navbar {
+        width: 90%;
+    position: fixed;
+    top: 0%;
+    left: 5%;
+    }
+
     .navbar .navbar-container {
-        padding: 1.2rem 0%;
+        padding: 1.2rem 0;
+        width: 100%;
     }
 
     .navbar .logo {
