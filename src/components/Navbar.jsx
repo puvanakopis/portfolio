@@ -100,6 +100,16 @@ const Navbar = () => {
             Skills
           </Link>
           <Link 
+            to="qualifications" 
+            spy={true} 
+            smooth={true} 
+            duration={500} 
+            className="nav-link"
+            onSetActive={() => handleSectionChange('qualifications')}
+          >
+            Qualifications
+          </Link>
+          <Link 
             to="projects" 
             spy={true} 
             smooth={true} 
@@ -165,6 +175,17 @@ const Navbar = () => {
             onSetActive={() => handleSectionChange('skills')}
           >
             Skills
+          </Link>
+          <Link 
+            to="qualifications" 
+            spy={true} 
+            smooth={true} 
+            duration={500} 
+            className="nav-link"
+            onClick={closeMenu}
+            onSetActive={() => handleSectionChange('qualifications')}
+          >
+            Qualifications
           </Link>
           <Link 
             to="projects" 

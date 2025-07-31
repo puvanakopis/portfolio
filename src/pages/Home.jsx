@@ -7,6 +7,7 @@ import GitHub from '../assets/GitHub.png';
 import Instagram from '../assets/Instagram.png';
 import LinkedIn from '../assets/LinkedIn.png';
 import Twitter from '../assets/twitter.png';
+import { Link } from 'react-scroll';
 
 const Home = () => {
     const titles = ["Frontend Developer", "Backend Developer", "UI/UX Designer", "AI/ML Engineer"];
@@ -32,36 +33,31 @@ const Home = () => {
         }
     }, [charIndex, currentTitleIndex, titles]);
 
-
     return (
         <div className="home" id="home">
             {/* ------------- Social Media ------------- */}
             <div className="home-socials">
-                <a href='https://www.facebook.com/puvanakopis' target="_blank" className="social-icon">
-                    <img src={facebook} alt="" />
-                    <a href='https://www.facebook.com/puvanakopis' target="_blank" className="social-name">Facebook</a>
+                <a href='https://www.facebook.com/puvanakopis' target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <img src={facebook} alt="Facebook" />
+                    <span className="social-name">Facebook</span>
                 </a>
-                <a href='https://github.com/puvanakopis' target="_blank" className="social-icon">
-                    <img src={GitHub} alt="" />
-                    <a href='https://github.com/puvanakopis' target="_blank" className="social-name">GitHub</a>
+                <a href='https://github.com/puvanakopis' target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <img src={GitHub} alt="GitHub" />
+                    <span className="social-name">GitHub</span>
                 </a>
-                <div href='https://www.instagram.com/puvanakopis/?hl=en' target="_blank" className="social-icon">
-                    <img src={Instagram} alt="" />
-                    <a href='https://www.instagram.com/puvanakopis/?hl=en' target="_blank" className="social-name">Instagram</a>
-                </div>
-                <a href='https://www.linkedin.com/in/puvanakopis/' target="_blank" className="social-icon">
-                    <img src={LinkedIn} alt="" />
-                    <a href='https://www.linkedin.com/in/puvanakopis/' target="_blank" className="social-name">LinkedIn</a>
+                <a href='https://www.instagram.com/puvanakopis/?hl=en' target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <img src={Instagram} alt="Instagram" />
+                    <span className="social-name">Instagram</span>
                 </a>
-                <a href='https://x.com/puvanakopis' target="_blank" className="social-icon">
-                    <img src={Twitter} alt="" />
-                    <a href='https://x.com/puvanakopis' target="_blank" className="social-name">Twitter</a>
+                <a href='https://www.linkedin.com/in/puvanakopis/' target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <img src={LinkedIn} alt="LinkedIn" />
+                    <span className="social-name">LinkedIn</span>
+                </a>
+                <a href='https://x.com/puvanakopis' target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <img src={Twitter} alt="Twitter" />
+                    <span className="social-name">Twitter</span>
                 </a>
             </div>
-
-
-
-
 
             {/* ------------- Profile Info ------------- */}
             <div className="home-profile">
@@ -73,9 +69,16 @@ const Home = () => {
                     <a href={cvFile} download="Puvankopis_CV.pdf" className="btn btn-light">
                         Download CV
                     </a>
-                    <a href="/contact" className="btn btn-dark">
+                    <Link 
+                        to="contact" 
+                        spy={true} 
+                        smooth={true} 
+                        offset={0} 
+                        duration={1000} 
+                        className="btn btn-dark"
+                    >
                         Contact Info
-                    </a>
+                    </Link>
                 </div>
             </div>
 
