@@ -2,33 +2,29 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding-bottom: 15vh !important;
+    min-height: 85vh;
+    padding-bottom: 20vh !important;
 }
 
 .projects-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    padding: 0 2rem;
     gap: 3rem;
-
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    padding-top: 10vh !important;
     box-sizing: border-box;
 }
 
 .projects .logo {
-      width: fit-content;
+    width: fit-content;
     display: flex;
     justify-content: start !important;
     align-items: start !important;
     z-index: 999;
-    padding-top: 12px;
-    padding-bottom: 10vh !important;
 }
-
 
 .projects-container-wrapper {
     display: flex;
@@ -38,7 +34,6 @@
     padding: 0;
     position: relative;
     width: 100%;
-    max-width: 1200px;
 }
 
 /* --------------- Projects container --------------- */
@@ -59,11 +54,12 @@
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    height: 65vh;
+    height: auto;
+    min-height: 420px;
     width: 100%;
-    max-width: 60vh;
+    max-width: 400px;
     min-width: 280px;
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
 }
 
 .project-card:hover {
@@ -73,40 +69,39 @@
 /* Project Image */
 .project-image img {
     width: 100%;
-    height: 35vh;
+    height: 220px;
     object-fit: cover;
 }
 
 /* Project Content */
 .project-content {
-    height: 25vh;
-    padding: 0 5%;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    height: calc(100% - 220px);
+    box-sizing: border-box;
 }
 
-.project-content .project-title {
-    padding: 15px 0 !important;
-    margin: 0 !important;
+.project-title {
     font-size: 1.5rem;
-    gap: 0 !important;
+    color: var(--text-color);
+    margin: 0 !important;
 }
 
-.project-content .project-description {
+.project-description {
     font-size: 1rem;
-    padding: 5px 0 !important;
-    margin: 0 !important;
+    color: var(--text-color);
+    flex-grow: 1;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    padding: 5px 0 !important;
-    margin: 0 !important;
+    gap: 8px;
+    margin-bottom: 1.5rem;
 }
 
-.project-tags span {
+.project-tag {
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -115,18 +110,39 @@
 }
 
 .project-buttons {
-    padding: 1rem 10% !important;
-    margin: 0 !important;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .btn-project {
-    font-size: 1rem;
-    padding: 0.4rem 1rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex: 1;
 }
 
+.btn-light {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-dark {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+}
+
+.btn-project:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 /* --------------- Arrow button --------------- */
 .carousel-button {
@@ -171,96 +187,167 @@
     background-color: #bbb;
     margin: 0 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .dot.active {
     background-color: var(--primary-color);
 }
 
-/* ------------- Responsive styles ------------- */
+/* ---------------- Responsive ---------------- */
 @media (max-width: 1024px) {
+    .projects-container {
+        padding-top: 8vh !important;
+        gap: 2rem;
+    }
+    
     .projects-carousel {
         width: calc(100% - 80px);
-    }
-
-    .project .logo {
-        padding-bottom: 5vh !important;
+        gap: 20px;
     }
     
     .project-card {
-        max-width: 450px;
-        height: 70vh;
+        min-height: 380px;
     }
-
-    .project-content h3 {
-        font-size: 1.3rem;
+    
+    .project-title {
+        font-size: 1.4rem;
+    }
+    
+    .carousel-button {
+        font-size: 2rem;
+    }
+    
+    .projects .logo {
+        padding-bottom: 4vh !important;
     }
 }
 
 @media (max-width: 768px) {
-    .projects {
-        padding:0 15px 30px 15px;
-        min-height: auto;
+    .projects-container {
+        padding-top: 6vh !important;
     }
+    
+    .projects-carousel {
+        width: calc(100% - 70px);
+        gap: 15px;
+    }
+    
+    .project-card {
+        min-height: 360px;
+        min-width: 250px;
+    }
+    
+    .project-title {
+        font-size: 1.3rem;
+    }
+    
+    .project-description {
+        font-size: 0.95rem;
+    }
+    
+    .carousel-button {
+        font-size: 1.8rem;
+    }
+}
 
+@media (max-width: 600px) {
+    .projects {
+        padding-bottom: 15vh !important;
+    }
+    
+    .projects-container {
+        padding-top: 5vh !important;
+    }
+    
     .projects-carousel {
         width: calc(100% - 60px);
     }
-
-    .carousel-button {
-        font-size: 2rem;
-    }
-
+    
     .project-card {
-        min-height: 450px;
+        min-height: 340px;
+        max-width: 25rem;
     }
-
-    .project-content h3 {
+    
+    .project-title {
         font-size: 1.2rem;
     }
-
-    .project-content p {
-        font-size: 0.9rem;
+    
+    .carousel-dots {
+        margin-top: 25px;
     }
 }
 
 @media (max-width: 480px) {
+    .projects {
+        padding-bottom: 12vh !important;
+    }
+    
+    .projects-container {
+        padding-top: 4vh !important;
+        gap: 1.5rem;
+    }
+    
     .projects-carousel {
-        width: calc(100% - 40px);
+        width: calc(100% - 50px);
+        gap: 10px;
+        padding: 5px 0;
     }
-
-    .carousel-button {
-        font-size: 1.8rem;
-        padding: 5px;
-    }
-
+    
     .project-card {
-        min-width: 250px;
-        min-height: 400px;
+        min-height: 320px;
+        min-width: 200px;
+        max-width: 15rem;
+        border-width: 2px;
     }
-
-    .project-content {
-        padding: 1rem;
-    }
-
-    .project-content h3 {
+    
+    .project-title {
         font-size: 1.1rem;
     }
-
+    
+    .project-description {
+        font-size: 0.9rem;
+    }
+    
+    .project-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .carousel-button {
+        font-size: 1.6rem;
+        padding: 5px;
+    }
+    
+    .btn-project {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
     .carousel-dots {
         margin-top: 20px;
     }
-
+    
     .dot {
         width: 10px;
         height: 10px;
     }
 }
 
-
-.btn-project {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+@media (max-width: 400px) {
+    .projects-carousel {
+        width: calc(100% - 40px);
+    }
+        
+    .project-title {
+        font-size: 1rem;
+    }
+    
+    .project-description {
+        font-size: 0.85rem;
+    }
+    
+    .carousel-button {
+        font-size: 1.4rem;
+    }
 }

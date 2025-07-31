@@ -20,7 +20,6 @@
     justify-content: start !important;
     align-items: start !important;
     z-index: 999;
-    padding-top: 12px;
     padding-bottom: 15vh !important;
 }
 
@@ -142,7 +141,6 @@
 .institution,
 .company {
     font-size: 1rem;
-    color: var(--secondary-color);
     margin-bottom: 0.5rem;
 }
 
@@ -150,7 +148,6 @@
     display: flex;
     align-items: center;
     font-size: 0.9rem;
-    color: var(--secondary-color);
     margin-bottom: 0.5rem;
 }
 
@@ -172,7 +169,6 @@
 .description {
     font-size: 0.9rem;
     line-height: 1.5;
-    color: var(--text-color);
 }
 
 

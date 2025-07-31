@@ -57,7 +57,6 @@ const Navbar = () => {
     else if (section === 'qualifications') return 'Qualifications';
     else if (section === 'projects') return 'My Projects';
     else if (section === 'contact') return 'Contact Me';
-    
     return section.charAt(0).toUpperCase() + section.slice(1);
   };
 

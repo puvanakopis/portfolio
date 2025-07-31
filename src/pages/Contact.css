@@ -73,15 +73,28 @@
     gap: 1.5rem;
 }
 
+.form-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-group input,
 .form-group textarea {
-    width: 100%;
+    width: 90%;
     padding: 0.8rem;
     border: 2px solid var(--primary-color);
     border-radius: 5px;
     color: var(--text-color);
     font-size: 1rem;
 }
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border: 2px solid var(--primary-color);
+    outline: none;
+}
+
 
 .form-group textarea {
     resize: vertical;
@@ -90,6 +103,7 @@
 
 .btn-1 {
     border-radius: 5px;
+    margin-left: 2.5%;
 }
 
 
@@ -163,7 +177,7 @@
 
     .form-group input,
     .form-group textarea {
-        padding: 12px;
+        /* padding: 12px; */
         font-size: 15px;
     }
 

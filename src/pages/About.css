@@ -1,6 +1,7 @@
 .about {
     display: flex;
     flex-direction: column;
+    min-height: 85vh;
     width: 100%;
     padding-bottom: 15vh !important;
 }
@@ -38,7 +39,7 @@
     max-width: 400px;
     border-radius: 20px;
     object-fit: cover;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--black);
 }
 
 
@@ -125,8 +126,8 @@
 }
 
 @media (max-width: 480px) {
-    .about-image img {
-        max-width: 250px;
+    .about-image {
+        display: none;
     }
 
     .about-text p {

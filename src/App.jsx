@@ -22,7 +22,6 @@ function App() {
           <Projects id="projects" />
           <Contact id="contact" />
           <FloatingHomeButton />
-
         </main>
       </div>
     </Router>

@@ -2,11 +2,9 @@
 
 :root {
   --primary-color: #4F4D4D;
-  --secondary-color: black;
-  --hover-color: #000;
   --bg-color: #F8F9FA;
-  --mobile-bg: #F8F9FA;
   --transition-speed: 0.3s;
+  --back: #000;
 }
 
 * {
@@ -15,11 +13,11 @@
 }
 
 body {
-  background-color: #F8F9FA;
+  background-color: var(--bg-color);
   padding-left: 10%;
   padding-right: 10%;
   font-size: 25px;
-  color: #4F4D4D;
+  color: var(--primary-color);
   margin: 0;
 }
 
@@ -53,11 +51,11 @@ h2 {
 .btn-dark {
   background-color: var(--primary-color);
   border: 2px solid var(--primary-color);
-  color: white !important;
+  color: var(--bg-color) !important;
 }
 
 .btn-dark:hover {
-  background-color: white;
+  background-color: var(--bg-color);
   color: var(--primary-color) !important;
 }
 
@@ -77,7 +75,7 @@ h2 {
 
 
 
-@media (max-width: 1024px) and (min-width: 768px) {
+@media (max-width: 1024px){
   body {
     font-size: 20px !important;
   }
@@ -95,7 +93,7 @@ h2 {
   }
 }
 
-@media (max-width: 768px) and (min-width: 480px) {
+@media (max-width: 768px) {
   body {
     font-size: 18px !important;
     padding-left: 5%;
