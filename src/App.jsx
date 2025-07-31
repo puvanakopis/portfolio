@@ -7,6 +7,7 @@ import Skills from './pages/Skills';
 import Qualifications from './pages/Qualifications';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
+import FloatingHomeButton from './components/FloatingHomeButton';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Qualifications id="qualifications" />
           <Projects id="projects" />
           <Contact id="contact" />
+          <FloatingHomeButton />
+
         </main>
       </div>
     </Router>

@@ -81,13 +81,13 @@ const Projects = () => {
         };
     }, [projects.length, cardsToShow, isAutoPlaying]);
 
-    // Move to next slide by 1 card only
+    // Move to next slide
     const nextSlide = () => {
         const maxIndex = projects.length - cardsToShow;
         setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
     };
 
-    // Move to previous slide by 1 card only
+    // Move to previous slide
     const prevSlide = () => {
         const maxIndex = projects.length - cardsToShow;
         setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
@@ -118,7 +118,6 @@ const Projects = () => {
         resumeAutoPlay();
     };
 
-    // Calculate the number of dots = projects.length - cardsToShow + 1 (for partial sliding by 1 card)
     const dotsCount = projects.length - cardsToShow + 1;
 
     return (

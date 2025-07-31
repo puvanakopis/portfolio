@@ -54,6 +54,7 @@ const Navbar = () => {
     if (section === 'home') return 'Puvankopis';
     else if (section === 'about') return 'About Me';
     else if (section === 'skills') return 'My Skills';
+    else if (section === 'qualifications') return 'Qualifications';
     else if (section === 'projects') return 'My Projects';
     else if (section === 'contact') return 'Contact Me';
     
@@ -69,16 +70,7 @@ const Navbar = () => {
 
         {/* ------------ Desktop Navigation ------------ */}
         <div className="desktop-links">
-          <Link 
-            to="home" 
-            spy={true} 
-            smooth={true} 
-            duration={500} 
-            className="nav-link"
-            onSetActive={() => handleSectionChange('home')}
-          >
-            Home
-          </Link>
+        
           <Link 
             to="about" 
             spy={true} 
