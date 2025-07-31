@@ -61,6 +61,11 @@
     font-weight: 600;
 }
 
+.category-icon {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
 .category-skills {
     display: flex;
     flex-direction: column;

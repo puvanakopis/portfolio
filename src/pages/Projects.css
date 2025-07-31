@@ -235,3 +235,10 @@
         height: 10px;
     }
 }
+
+
+.btn-project {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

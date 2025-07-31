@@ -1,4 +1,3 @@
-// Importing styles and icons
 import './Qualifications.css';
 import { FaGraduationCap, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 import { useState } from 'react';

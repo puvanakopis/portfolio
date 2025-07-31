@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import './Projects.css';
 import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.png';
@@ -11,7 +12,7 @@ const Projects = () => {
             title: 'Yummi',
             description: 'A modern, responsive restaurant website showcasing delicious menus, offers, and reviews for food lovers.',
             image: project1,
-            tags: ['React','CSS3'],
+            tags: ['React', 'CSS3'],
             demolink: '#',
             gitlink: 'https://github.com/puvanakopis/Yummi'
         },
@@ -21,7 +22,7 @@ const Projects = () => {
             description: ' sleek restaurant website featuring curated menus, seasonal specials, and diner testimonials.',
             image: project2,
             tags: ['HTML/CSS', 'JavaScript', 'Responsive Design'],
-             demolink: 'https://foodi-860506298.development.catalystserverless.com/app/index.html',
+            demolink: 'https://foodi-860506298.development.catalystserverless.com/app/index.html',
             gitlink: 'https://github.com/puvanakopis/Foodi'
         },
         {
@@ -29,7 +30,7 @@ const Projects = () => {
             title: 'Edusity',
             description: 'Explore website for programs, resources, and campus updates—all in one place..',
             image: project3,
-            tags: ['React','CSS3'],
+            tags: ['React', 'CSS3'],
             demolink: '#',
             gitlink: 'https://github.com/puvanakopis/Edusity'
         },
@@ -59,11 +60,12 @@ const Projects = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    // Improved auto slide change with pause on hover
+    // Auto slide change with pause on hover
     useEffect(() => {
         let interval;
-        const maxIndex = Math.max(0, projects.length - cardsToShow);
-        
+        // maxIndex is the highest start index that still shows full cardsToShow cards
+        const maxIndex = projects.length - cardsToShow;
+
         const startInterval = () => {
             if (isAutoPlaying) {
                 interval = setInterval(() => {
@@ -73,21 +75,21 @@ const Projects = () => {
         };
 
         startInterval();
-        
+
         return () => {
             if (interval) clearInterval(interval);
         };
     }, [projects.length, cardsToShow, isAutoPlaying]);
 
-    // Move to next slide
+    // Move to next slide by 1 card only
     const nextSlide = () => {
-        const maxIndex = Math.max(0, projects.length - cardsToShow);
+        const maxIndex = projects.length - cardsToShow;
         setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
     };
 
-    // Move to previous slide
+    // Move to previous slide by 1 card only
     const prevSlide = () => {
-        const maxIndex = Math.max(0, projects.length - cardsToShow);
+        const maxIndex = projects.length - cardsToShow;
         setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
     };
 
@@ -116,16 +118,19 @@ const Projects = () => {
         resumeAutoPlay();
     };
 
+    // Calculate the number of dots = projects.length - cardsToShow + 1 (for partial sliding by 1 card)
+    const dotsCount = projects.length - cardsToShow + 1;
+
     return (
         <div className="projects" id="projects">
             <div className="projects-container-wrapper">
                 {/* --------------- Arrow button --------------- */}
-                <button 
-                    className="carousel-button prev" 
+                <button
+                    className="carousel-button prev"
                     onClick={() => {
                         prevSlide();
                         pauseAutoPlay();
-                    }} 
+                    }}
                     aria-label="Previous slide"
                 >
                     &#10094;
@@ -154,11 +159,25 @@ const Projects = () => {
                                     ))}
                                 </div>
                                 <div className="project-buttons">
-                                    <a href={project.demolink} target="_blank" className="btn btn-project btn-light" aria-label={`View ${project.title} project`}>
-                                        Demo link
+                                    <a
+                                        href={project.demolink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn btn-project btn-light"
+                                        aria-label={`View ${project.title} project`}
+                                    >
+                                        <FaExternalLinkAlt style={{ marginRight: '6px' }} />
+                                        Demo
                                     </a>
-                                    <a href={project.gitlink} target="_blank" className="btn btn-project btn-dark" aria-label={`View ${project.title} project details`}>
-                                        GitHub link
+                                    <a
+                                        href={project.gitlink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn btn-project btn-dark"
+                                        aria-label={`View ${project.title} project details`}
+                                    >
+                                        <FaGithub style={{ marginRight: '6px' }} />
+                                        GitHub
                                     </a>
                                 </div>
                             </div>
@@ -167,12 +186,12 @@ const Projects = () => {
                 </div>
 
                 {/* --------------- Arrow button --------------- */}
-                <button 
-                    className="carousel-button next" 
+                <button
+                    className="carousel-button next"
                     onClick={() => {
                         nextSlide();
                         pauseAutoPlay();
-                    }} 
+                    }}
                     aria-label="Next slide"
                 >
                     &#10095;
@@ -181,7 +200,7 @@ const Projects = () => {
 
             {/* --------------- Dot indicators --------------- */}
             <div className="carousel-dots">
-                {Array.from({ length: Math.max(1, projects.length - cardsToShow + 1) }).map((_, index) => (
+                {Array.from({ length: dotsCount }).map((_, index) => (
                     <span
                         key={index}
                         className={`dot ${index === currentIndex ? 'active' : ''}`}

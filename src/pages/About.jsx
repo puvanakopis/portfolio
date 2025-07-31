@@ -1,5 +1,6 @@
 import './About.css';
 import profileImage from '../assets/puvi.png';
+import { FaUser, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const About = () => {
   return (
@@ -21,17 +22,21 @@ const About = () => {
             <p>
               Outside coding, I enjoy exploring new technologies, contributing to open-source projects, and mentoring others. I focus on creating practical solutions with great user experiences.
             </p>
+
             {/* personal details */}
             <div className="about-details">
               <div className="detail-item">
+                <FaUser className="detail-icon" />
                 <span>Name:</span>
                 <p>Puvankopis</p>
               </div>
               <div className="detail-item">
+                <FaEnvelope className="detail-icon" />
                 <span>Email:</span>
                 <p>puvanakopis@gmail.com</p>
               </div>
               <div className="detail-item">
+                <FaMapMarkerAlt className="detail-icon" />
                 <span>From:</span>
                 <p>Batticaloa, Sri Lanka</p>
               </div>

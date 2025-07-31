@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { FaServer, FaCode, FaPaintBrush, FaBrain } from 'react-icons/fa';
 import './Skills.css';
 
 const Skills = () => {
   const skillCategories = [
     {
       title: 'Backend Developer',
+      icon: <FaServer />,
       skills: [
         { name: 'Express JS', level: 70 },
         { name: 'Node JS', level: 70 },
@@ -13,6 +15,7 @@ const Skills = () => {
     },
     {
       title: 'Frontend Developer',
+      icon: <FaCode />,
       skills: [
         { name: 'React', level: 85 },
         { name: 'JavaScript', level: 80 },
@@ -21,6 +24,7 @@ const Skills = () => {
     },
     {
       title: 'UI/UX Designer',
+      icon: <FaPaintBrush />,
       skills: [
         { name: 'Figma', level: 75 },
         { name: 'Photoshop', level: 60 },
@@ -30,6 +34,7 @@ const Skills = () => {
     },
     {
       title: 'AI/ML Developer',
+      icon: <FaBrain />,
       skills: [
         { name: 'Python', level: 85 },
         { name: 'TensorFlow', level: 70 },
@@ -38,7 +43,6 @@ const Skills = () => {
         { name: 'Data Preprocessing', level: 70 },
       ]
     }
-
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -65,23 +69,20 @@ const Skills = () => {
 
   // Automatically slide change
   useEffect(() => {
-    const maxIndex = Math.max(0, skillCategories.length - cardsToShow);
     const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % (maxIndex + 1));
+      setCurrentIndex(prev => (prev + 1) % skillCategories.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [skillCategories.length, cardsToShow]);
+  }, [skillCategories.length]);
 
   // Move to next slide
   const nextSlide = () => {
-    const maxIndex = Math.max(0, skillCategories.length - cardsToShow);
-    setCurrentIndex(prev => (prev + 1) % (maxIndex + 1));
+    setCurrentIndex(prev => (prev + 1) % skillCategories.length);
   };
 
   // Move to previous slide
   const prevSlide = () => {
-    const maxIndex = Math.max(0, skillCategories.length - cardsToShow);
-    setCurrentIndex(prev => (prev - 1 + (maxIndex + 1)) % (maxIndex + 1));
+    setCurrentIndex(prev => (prev - 1 + skillCategories.length) % skillCategories.length);
   };
 
   // Touch event handlers for mobile swipe support
@@ -112,7 +113,6 @@ const Skills = () => {
           &#10094;
         </button>
 
-
         {/* ------------- Skills container ------------- */}
         <div
           className="skills-container"
@@ -120,32 +120,36 @@ const Skills = () => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {skillCategories.slice(currentIndex, currentIndex + cardsToShow).map((category, index) => (
+          {[...Array(cardsToShow)].map((_, offset) => {
+            const category = skillCategories[(currentIndex + offset) % skillCategories.length];
+            return (
+              <div className="skill-category" key={offset}>
+                <h3 className="category-title">                
+                  <span className="category-icon">{category.icon}</span> {category.title}
+                </h3>
 
-            // ------------- skill cards -------------
-            <div className="skill-category" key={index}>
-              <h3 className="category-title">{category.title}</h3>
-              <div className="category-skills">
-                {category.skills.map((skill, skillIndex) => (
-                  <div className="skill-item" key={skillIndex}>
-                    <div className="skill-info">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percent">{skill.level}%</span>
+                <div className="category-skills">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div className="skill-item" key={skillIndex}>
+                      <div className="skill-info">
+                        <span className="skill-name">{skill.name}</span>
+                        <span className="skill-percent">{skill.level}%</span>
+                      </div>
+                      <div className="skill-bar">
+                        <div
+                          className="skill-progress"
+                          style={{ width: `${skill.level}%` }}
+                          aria-valuenow={skill.level}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
                     </div>
-                    <div className="skill-bar">
-                      <div
-                        className="skill-progress"
-                        style={{ width: `${skill.level}%` }}
-                        aria-valuenow={skill.level}
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* ------------- arrow button ------------- */}
@@ -156,7 +160,7 @@ const Skills = () => {
 
       {/* ------------- dot indicators ------------- */}
       <div className="carousel-dots">
-        {Array.from({ length: Math.max(1, skillCategories.length - cardsToShow + 1) }).map((_, index) => (
+        {skillCategories.map((_, index) => (
           <span
             key={index}
             className={`dot ${index === currentIndex ? 'active' : ''}`}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaDownload, FaEnvelopeOpenText } from 'react-icons/fa';
 import './Home.css';
 import cvFile from '../assets/puvi.png';
 import profileImage from '../assets/puvi.png';
@@ -67,18 +68,21 @@ const Home = () => {
 
                 <div className="home-actions">
                     <a href={cvFile} download="Puvankopis_CV.pdf" className="btn btn-light">
+                        <FaDownload style={{ marginRight: '8px' }} />
                         Download CV
                     </a>
-                    <Link 
-                        to="contact" 
-                        spy={true} 
-                        smooth={true} 
-                        offset={0} 
-                        duration={1000} 
+                    <Link
+                        to="contact"
+                        spy={true}
+                        smooth={true}
+                        offset={0}
+                        duration={1000}
                         className="btn btn-dark"
                     >
+                        <FaEnvelopeOpenText style={{ marginRight: '8px' }} />
                         Contact Info
                     </Link>
+
                 </div>
             </div>
 
