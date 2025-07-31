@@ -8,6 +8,7 @@ import Qualifications from './pages/Qualifications';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import FloatingHomeButton from './components/FloatingHomeButton';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Contact id="contact" />
           <FloatingHomeButton />
         </main>
+        <Footer/>
       </div>
     </Router>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaDownload, FaEnvelopeOpenText } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 import './Home.css';
 import cvFile from '../assets/puvi.png';
 import profileImage from '../assets/puvi.png';
@@ -7,7 +8,6 @@ import facebook from '../assets/Facebook.png';
 import GitHub from '../assets/GitHub.png';
 import Instagram from '../assets/Instagram.png';
 import LinkedIn from '../assets/LinkedIn.png';
-import Twitter from '../assets/twitter.png';
 import { Link } from 'react-scroll';
 
 const Home = () => {
@@ -55,7 +55,7 @@ const Home = () => {
                     <span className="social-name">LinkedIn</span>
                 </a>
                 <a href='https://x.com/puvanakopis' target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <img src={Twitter} alt="Twitter" />
+                    <FaXTwitter className='icon'/>
                     <span className="social-name">Twitter</span>
                 </a>
             </div>
