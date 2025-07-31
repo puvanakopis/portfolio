@@ -8,9 +8,9 @@ const Qualifications = () => {
   const educationData = [
     {
       id: 1,
-      title: "GCE Advanced Level",
+      title: "GCE Advanced Level (Physical Science)",
       institution: "BT/PD/Kaluthavalai Maha Vidyalayam (National School)",
-      period: "2018 – 2020",
+      period: "2019 – 2021",
       side: "right"
     },
     {
@@ -27,13 +27,16 @@ const Qualifications = () => {
       id: 1,
       title: "Freelance Web Developer",
       company: "Fiverr",
-      period: "Jun 2023 – Aug 2023",
+      period: "Jun 2024 – present",
       side: "left"
     },
   ];
 
   return (
     <section className="qualifications" id="qualifications">
+        <div className='logo'>
+        Qualifications
+      </div>
       <div className="qualifications-container">
         
         {/* ---------------- Tabs for education and experience ---------------- */}

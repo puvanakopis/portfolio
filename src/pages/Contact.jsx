@@ -4,6 +4,11 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 const Contact = () => {
   return (
     <div className="contact" id="contact">
+  <div className='logo'>
+          Contact Me
+        </div>
+      <div className="contact-container">
+      
         {/* ------------ Contact Info ------------ */}
         <div className='info-container'>
           <h2 className="info-title">Get In Touch</h2>
@@ -50,7 +55,7 @@ const Contact = () => {
           </div>
           <button type="submit" className="btn btn-1 btn-dark">Send Message</button>
         </form>
-        
+      </div>
     </div>
   );
 };

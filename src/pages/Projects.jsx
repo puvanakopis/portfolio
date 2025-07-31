@@ -10,7 +10,7 @@ const Projects = () => {
         {
             id: 1,
             title: 'Yummi',
-            description: 'A modern, responsive restaurant website showcasing delicious menus, offers, and reviews for food lovers.',
+            description: 'A modern, responsive restaurant website showcasing delicious menus, offers, and reviews',
             image: project1,
             tags: ['React', 'CSS3'],
             demolink: '#',
@@ -122,94 +122,101 @@ const Projects = () => {
 
     return (
         <div className="projects" id="projects">
-            <div className="projects-container-wrapper">
-                {/* --------------- Arrow button --------------- */}
-                <button
-                    className="carousel-button prev"
-                    onClick={() => {
-                        prevSlide();
-                        pauseAutoPlay();
-                    }}
-                    aria-label="Previous slide"
-                >
-                    &#10094;
-                </button>
-
-                {/* --------------- Projects container --------------- */}
-                <div
-                    className="projects-container"
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseEnter={pauseAutoPlay}
-                    onMouseLeave={resumeAutoPlay}
-                >
-                    {projects.slice(currentIndex, currentIndex + cardsToShow).map((project) => (
-                        <div className="project-card" key={project.id}>
-                            <div className="project-image">
-                                <img src={project.image} alt={project.title} />
-                            </div>
-                            <div className="project-content">
-                                <h3 className="project-title">{project.title}</h3>
-                                <p className="project-description">{project.description}</p>
-                                <div className="project-tags">
-                                    {project.tags.map((tag, index) => (
-                                        <span key={index} className="project-tag">{tag}</span>
-                                    ))}
-                                </div>
-                                <div className="project-buttons">
-                                    <a
-                                        href={project.demolink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-project btn-light"
-                                        aria-label={`View ${project.title} project`}
-                                    >
-                                        <FaExternalLinkAlt style={{ marginRight: '6px' }} />
-                                        Demo
-                                    </a>
-                                    <a
-                                        href={project.gitlink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-project btn-dark"
-                                        aria-label={`View ${project.title} project details`}
-                                    >
-                                        <FaGithub style={{ marginRight: '6px' }} />
-                                        GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* --------------- Arrow button --------------- */}
-                <button
-                    className="carousel-button next"
-                    onClick={() => {
-                        nextSlide();
-                        pauseAutoPlay();
-                    }}
-                    aria-label="Next slide"
-                >
-                    &#10095;
-                </button>
+            <div className='logo'>
+                My Projects
             </div>
 
-            {/* --------------- Dot indicators --------------- */}
-            <div className="carousel-dots">
-                {Array.from({ length: dotsCount }).map((_, index) => (
-                    <span
-                        key={index}
-                        className={`dot ${index === currentIndex ? 'active' : ''}`}
+            <div className="projects-container">
+
+                <div className="projects-container-wrapper">
+                    {/* --------------- Arrow button --------------- */}
+                    <button
+                        className="carousel-button prev"
                         onClick={() => {
-                            setCurrentIndex(index);
+                            prevSlide();
                             pauseAutoPlay();
                         }}
-                        aria-label={`Go to slide ${index + 1}`}
-                    ></span>
-                ))}
+                        aria-label="Previous slide"
+                    >
+                        &#10094;
+                    </button>
+
+                    {/* --------------- Projects container --------------- */}
+                    <div
+                        className="projects-carousel"
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                        onMouseEnter={pauseAutoPlay}
+                        onMouseLeave={resumeAutoPlay}
+                    >
+                        {projects.slice(currentIndex, currentIndex + cardsToShow).map((project) => (
+                            <div className="project-card" key={project.id}>
+                                <div className="project-image">
+                                    <img src={project.image} alt={project.title} />
+                                </div>
+                                <div className="project-content">
+                                    <h3 className="project-title">{project.title}</h3>
+                                    <p className="project-description">{project.description}</p>
+                                    <div className="project-tags">
+                                        {project.tags.map((tag, index) => (
+                                            <span key={index} className="project-tag">{tag}</span>
+                                        ))}
+                                    </div>
+                                    <div className="project-buttons">
+                                        <a
+                                            href={project.demolink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn btn-project btn-light"
+                                            aria-label={`View ${project.title} project`}
+                                        >
+                                            <FaExternalLinkAlt style={{ marginRight: '6px' }} />
+                                            Demo
+                                        </a>
+                                        <a
+                                            href={project.gitlink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn btn-project btn-dark"
+                                            aria-label={`View ${project.title} project details`}
+                                        >
+                                            <FaGithub style={{ marginRight: '6px' }} />
+                                            GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* --------------- Arrow button --------------- */}
+                    <button
+                        className="carousel-button next"
+                        onClick={() => {
+                            nextSlide();
+                            pauseAutoPlay();
+                        }}
+                        aria-label="Next slide"
+                    >
+                        &#10095;
+                    </button>
+                </div>
+
+                {/* --------------- Dot indicators --------------- */}
+                <div className="carousel-dots">
+                    {Array.from({ length: dotsCount }).map((_, index) => (
+                        <span
+                            key={index}
+                            className={`dot ${index === currentIndex ? 'active' : ''}`}
+                            onClick={() => {
+                                setCurrentIndex(index);
+                                pauseAutoPlay();
+                            }}
+                            aria-label={`Go to slide ${index + 1}`}
+                        ></span>
+                    ))}
+                </div>
             </div>
         </div>
     );

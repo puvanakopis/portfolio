@@ -1,14 +1,30 @@
 .skills {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    padding-bottom: 20vh !important;
+}
+
+.skills-container {
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 85vh;
-    width: 100%;
+    gap: 3rem;
+
+    flex-direction: column;
     position: relative;
     overflow: hidden;
-    padding-top: 20vh !important;
+    padding-top: 10vh !important;
     box-sizing: border-box;
+}
+
+.skills .logo {
+    width: fit-content;
+    display: flex;
+    justify-content: start !important;
+    align-items: start !important;
+    z-index: 999;
+    padding-top: 12px;
 }
 
 .skills-container-wrapper {
@@ -19,11 +35,10 @@
     padding: 0;
     position: relative;
     width: 100%;
-    max-width: 1200px;
 }
 
 /* ------------- Skills container ------------- */
-.skills-container {
+.skills-carousel {
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -171,8 +186,18 @@
 
 /* ------------- Responsive styles ------------- */
 @media (max-width: 1024px) {
-    .skills-container {
+     .skills-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .skills-carousel {
         width: calc(100% - 80px);
+    }
+
+     .skills .logo {
+        padding-bottom: 5vh !important;
     }
 
     .skill-category {
@@ -188,7 +213,7 @@
 
 @media (max-width: 768px) {
     .skills {
-        padding: 30px 15px;
+        padding: 0 15px 30px 15px;
         min-height: auto;
     }
 
@@ -197,7 +222,7 @@
         margin-bottom: 1.5rem;
     }
 
-    .skills-container {
+    .skills-carousel {
         width: calc(100% - 60px);
     }
 
@@ -219,7 +244,7 @@
 }
 
 @media (max-width: 480px) {
-    .skills-container {
+    .skills-carousel {
         width: calc(100% - 40px);
     }
 

@@ -5,6 +5,9 @@ import { FaUser, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 const About = () => {
   return (
     <div className="about" id="about">
+      <div className='logo'>
+        About Me
+      </div>
       <div className="about-container">
 
         {/* ------------ Profile image ------------ */}

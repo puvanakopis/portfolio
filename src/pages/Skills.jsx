@@ -106,68 +106,74 @@ const Skills = () => {
 
   return (
     <div className="skills" id="skills">
-      <div className="skills-container-wrapper">
+      <div className='logo'>
+        My Skills
+      </div>
+      <div className="skills-container">
 
-        {/* ------------- arrow button ------------- */}
-        <button className="carousel-button prev" onClick={prevSlide} aria-label="Previous slide">
-          &#10094;
-        </button>
+        <div className="skills-container-wrapper">
 
-        {/* ------------- Skills container ------------- */}
-        <div
-          className="skills-container"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          {[...Array(cardsToShow)].map((_, offset) => {
-            const category = skillCategories[(currentIndex + offset) % skillCategories.length];
-            return (
-              <div className="skill-category" key={offset}>
-                <h3 className="category-title">                
-                  <span className="category-icon">{category.icon}</span> {category.title}
-                </h3>
+          {/* ------------- arrow button ------------- */}
+          <button className="carousel-button prev" onClick={prevSlide} aria-label="Previous slide">
+            &#10094;
+          </button>
 
-                <div className="category-skills">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div className="skill-item" key={skillIndex}>
-                      <div className="skill-info">
-                        <span className="skill-name">{skill.name}</span>
-                        <span className="skill-percent">{skill.level}%</span>
+          {/* ------------- Skills container ------------- */}
+          <div
+            className="skills-carousel"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {[...Array(cardsToShow)].map((_, offset) => {
+              const category = skillCategories[(currentIndex + offset) % skillCategories.length];
+              return (
+                <div className="skill-category" key={offset}>
+                  <h3 className="category-title">
+                    <span className="category-icon">{category.icon}</span> {category.title}
+                  </h3>
+
+                  <div className="category-skills">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div className="skill-item" key={skillIndex}>
+                        <div className="skill-info">
+                          <span className="skill-name">{skill.name}</span>
+                          <span className="skill-percent">{skill.level}%</span>
+                        </div>
+                        <div className="skill-bar">
+                          <div
+                            className="skill-progress"
+                            style={{ width: `${skill.level}%` }}
+                            aria-valuenow={skill.level}
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
                       </div>
-                      <div className="skill-bar">
-                        <div
-                          className="skill-progress"
-                          style={{ width: `${skill.level}%` }}
-                          aria-valuenow={skill.level}
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* ------------- arrow button ------------- */}
+          <button className="carousel-button next" onClick={nextSlide} aria-label="Next slide">
+            &#10095;
+          </button>
         </div>
 
-        {/* ------------- arrow button ------------- */}
-        <button className="carousel-button next" onClick={nextSlide} aria-label="Next slide">
-          &#10095;
-        </button>
-      </div>
-
-      {/* ------------- dot indicators ------------- */}
-      <div className="carousel-dots">
-        {skillCategories.map((_, index) => (
-          <span
-            key={index}
-            className={`dot ${index === currentIndex ? 'active' : ''}`}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          ></span>
-        ))}
+        {/* ------------- dot indicators ------------- */}
+        <div className="carousel-dots">
+          {skillCategories.map((_, index) => (
+            <span
+              key={index}
+              className={`dot ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            ></span>
+          ))}
+        </div>
       </div>
     </div>
   );

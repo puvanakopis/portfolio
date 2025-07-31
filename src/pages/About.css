@@ -1,21 +1,30 @@
 .about {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     width: 100%;
-    padding-top: 20vh !important;
-
+    padding-bottom: 15vh !important;
 }
 
 .about-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
     gap: 3rem;
 }
+
+.about .logo {
+    width: fit-content;
+    display: flex;
+    justify-content: start !important;
+    align-items: start !important;
+    z-index: 999;
+    padding-top: 12px;
+    padding-bottom: 10vh !important;
+}
+
+
 
 /* ------------ Profile image ------------ */
 .about-image {
@@ -72,28 +81,16 @@
     margin: 0;
 }
 
-.detail-icon {
-    font-size: 18px;
-  margin-right: 4px;
-  color: #555;
-}
-.detail-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-.detail-item span {
-  font-weight: 600;
-}
-
-
 /* ------------- Responsive ------------- */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .about-container {
         flex-direction: column;
         gap: 2rem;
         padding: 0 1rem;
+    }
+
+    .about .logo {
+        padding-bottom: 5vh !important;
     }
 
     .about-image {

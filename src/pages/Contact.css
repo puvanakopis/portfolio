@@ -1,10 +1,26 @@
 .contact {
     display: flex;
-    align-items: center;
-    height: 85vh;
+    flex-direction: column;
     width: 100%;
-    padding-top: 15vh !important;
+    height: 85vh;
+    padding-bottom: 15vh !important;
 }
+
+.contact-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.contact .logo {
+    width: fit-content;
+    display: flex;
+    justify-content: start !important;
+    align-items: start !important;
+    z-index: 999;
+    padding-top: 12px;
+    padding-bottom: 10vh !important;
+}
+
 
 /* ------------ Contact Info ------------ */
 .info-container {
@@ -78,13 +94,20 @@
 
 
 /* ------------- Responsive Design ------------- */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .contact {
         flex-direction: column;
         height: auto;
-        gap: 40px;
         padding-bottom: 5vh;
+    }
 
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact .logo {
+        padding-bottom: 5vh !important;
     }
 
     .info-container {
@@ -121,7 +144,12 @@
 
 @media (max-width: 600px) {
     .contact {
-        padding: 30px 0;
+        padding: 0 0 30px 0;
+    }
+
+    .contact-container {
+        display: flex;
+        flex-direction: column;
     }
 
     .info-title {

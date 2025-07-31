@@ -1,14 +1,29 @@
 .qualifications {
-    padding-top: 20vh !important;
+    padding-bottom: 15vh !important;
+    width: 100%;
+
     min-height: 85vh;
 }
 
 
 .qualifications-container {
-    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+    gap: 3rem;
+
+    max-width: 1000px;
 }
+
+.qualifications .logo {
+    width: fit-content;
+    display: flex;
+    justify-content: start !important;
+    align-items: start !important;
+    z-index: 999;
+    padding-top: 12px;
+    padding-bottom: 15vh !important;
+}
+
 
 
 /* ---------------- Tabs for education and experience ---------------- */
@@ -115,7 +130,7 @@
 .timeline-item.right .timeline-content {
     margin-left: auto;
     margin-right: -15px;
-    text-align: right;
+    text-align: right !important;
 }
 
 .timeline-content h3 {
@@ -142,6 +157,17 @@
 .timeline-period .calendar-icon {
     margin-right: 0.5rem;
 }
+
+.timeline-item.left  .timeline-period{
+    display: flex;
+    justify-content: start;
+}
+
+.timeline-item.right  .timeline-period{
+    display: flex;
+    justify-content: end;
+}
+
 
 .description {
     font-size: 0.9rem;
