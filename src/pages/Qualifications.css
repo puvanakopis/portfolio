@@ -122,13 +122,13 @@
 
 .timeline-item.left .timeline-content {
     margin-right: auto;
-    margin-left: -15px;
+    margin-left: -1.5rem;
     text-align: left;
 }
 
 .timeline-item.right .timeline-content {
     margin-left: auto;
-    margin-right: -15px;
+    margin-right:  -1.5rem;
     text-align: right !important;
 }
 
@@ -180,9 +180,10 @@
     }
 
     .timeline-item::before {
-        left: 1rem;
-        transform: translateX(0);
+        width: 0 !important;
     }
+
+    
 
     .timeline-content {
         width: calc(100% - 3rem);

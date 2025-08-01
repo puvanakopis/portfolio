@@ -24,6 +24,8 @@
     justify-content: start !important;
     align-items: start !important;
     z-index: 999;
+        padding-bottom: 10vh !important;
+
 }
 
 .projects-container-wrapper {
