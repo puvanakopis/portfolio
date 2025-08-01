@@ -4,6 +4,7 @@ import './Projects.css';
 import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.png';
 import project3 from '../assets/project3.png';
+import project4 from '../assets/project4.png';
 
 const Projects = () => {
     const projects = [
@@ -31,6 +32,15 @@ const Projects = () => {
             description: 'Explore website for programs, resources, and campus updates—all in one place..',
             image: project3,
             tags: ['React', 'CSS3'],
+            demolink: '#',
+            gitlink: 'https://github.com/puvanakopis/Edusity'
+        },
+        {
+            id: 4,
+            title: 'CampusEase',
+            description: 'CampusEase connects students and lecturers in Sri Lanka with trusted housing and transport.',
+            image: project4,
+            tags: ['React', 'node js'],
             demolink: '#',
             gitlink: 'https://github.com/puvanakopis/Edusity'
         },

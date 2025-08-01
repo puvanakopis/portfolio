@@ -8,7 +8,7 @@ import facebook from '../assets/Facebook.png';
 import GitHub from '../assets/GitHub.png';
 import Instagram from '../assets/Instagram.png';
 import LinkedIn from '../assets/LinkedIn.png';
-import Twitter from '../assets/Twitter.png'
+import Twitter from '../assets/twitter.png'
 import { Link } from 'react-scroll';
 
 const Home = () => {
