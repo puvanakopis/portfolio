@@ -29,6 +29,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
+  cursor: pointer;
 }
 
 .footer-link {

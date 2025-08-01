@@ -21,7 +21,7 @@ const Footer = () => {
               smooth={true} 
               duration={500} 
               className="footer-link"
-              offset={-80} 
+              offset={0} 
             >
               Home
             </Link>
@@ -30,7 +30,7 @@ const Footer = () => {
               smooth={true} 
               duration={500} 
               className="footer-link"
-              offset={-80}
+              offset={0}
             >
               About
             </Link>
@@ -39,7 +39,7 @@ const Footer = () => {
               smooth={true} 
               duration={500} 
               className="footer-link"
-              offset={-80}
+              offset={0}
             >
               Skills
             </Link>
@@ -48,7 +48,7 @@ const Footer = () => {
               smooth={true} 
               duration={500} 
               className="footer-link"
-              offset={-80}
+              offset={0}
             >
               Qualifications
             </Link>
@@ -57,7 +57,7 @@ const Footer = () => {
               smooth={true} 
               duration={500} 
               className="footer-link"
-              offset={-80}
+              offset={0}
             >
               Projects
             </Link>
@@ -66,7 +66,7 @@ const Footer = () => {
               smooth={true} 
               duration={500} 
               className="footer-link"
-              offset={-80}
+              offset={0}
             >
               Contact
             </Link>

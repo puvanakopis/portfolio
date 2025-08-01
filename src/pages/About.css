@@ -71,6 +71,11 @@
     height: auto;
 }
 
+.detail-item .detail-icon {
+    width: 15px;
+    height: 15px;
+}
+
 .about-details .detail-item span {
     font-weight: 600;
     color: var(--primary-color);
