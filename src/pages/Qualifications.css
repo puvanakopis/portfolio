@@ -1,10 +1,7 @@
 .qualifications {
     padding-bottom: 15vh !important;
     width: 100%;
-
-    min-height: 85vh;
 }
-
 
 .qualifications-container {
     margin: 0 auto;
@@ -128,8 +125,8 @@
 
 .timeline-item.right .timeline-content {
     margin-left: auto;
-    margin-right:  -1.5rem;
-    text-align: right !important;
+    margin-right: -1.5rem;
+    text-align: right;
 }
 
 .timeline-content h3 {
@@ -155,12 +152,12 @@
     margin-right: 0.5rem;
 }
 
-.timeline-item.left  .timeline-period{
+.timeline-item.left .timeline-period {
     display: flex;
     justify-content: start;
 }
 
-.timeline-item.right  .timeline-period{
+.timeline-item.right .timeline-period {
     display: flex;
     justify-content: end;
 }
@@ -174,16 +171,43 @@
 
 
 /* ---------------- Responsive ---------------- */
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
+    .qualifications {
+        min-height: 85vh;
+    }
+}
+
+
+@media (max-width: 769px) {
+    .timeline {
+        padding: 0 !important;
+    }
+
     .timeline::before {
-        left: 1rem;
+        display: none;
     }
 
     .timeline-item::before {
-        width: 0 !important;
+        display: none;
     }
 
-    
+    .timeline-item.left .timeline-content {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        text-align: left !important;
+    }
+
+    .timeline-item.right .timeline-content {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        text-align: left !important;
+    }
+
+    .timeline-item.right .timeline-period {
+        display: flex;
+        justify-content: start !important;
+    }
+
 
     .timeline-content {
         width: calc(100% - 3rem);

@@ -1,8 +1,8 @@
 .about {
     display: flex;
     flex-direction: column;
-    min-height: 85vh;
     width: 100%;
+    height: fit-content;
     padding-bottom: 15vh !important;
 }
 
@@ -88,6 +88,13 @@
 }
 
 /* ------------- Responsive ------------- */
+@media (min-width: 1024px) {
+    .about {
+        min-height: 85vh;
+    }
+}
+
+
 @media (max-width: 1024px) {
     .about-container {
         flex-direction: column;
