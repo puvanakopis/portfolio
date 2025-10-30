@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaDownload, FaEnvelopeOpenText } from 'react-icons/fa';
-import { FaXTwitter } from "react-icons/fa6";
 import './Home.css';
 import cvFile from '../assets/Puvankopis_CV.pdf';
 import profileImage from '../assets/puvi.png';
