@@ -4,7 +4,6 @@ import { MdOutlineSmartToy } from "react-icons/md";
 import { Link } from 'react-scroll';
 import cvFile from '../assets/Puvanakopis_CV.pdf';
 import profileImage from '../assets/puvi.png';
-import LightButton from '../components/buttons/LightButton';
 import DarkButton from '../components/buttons/DarkButton';
 
 const TITLES = ["Frontend Developer", "Backend Developer", "AI/ML Engineer"];
@@ -63,16 +62,20 @@ const Home = () => {
 
                 {/* Buttons */}
                 <div className="mt-5 flex gap-5 max-md:flex-col max-md:items-center max-md:gap-[10px] animate-[heroRise_1s_ease-out] [animation-delay:420ms] [animation-fill-mode:both]">
-                    <LightButton
-                        href="#contact"
+                    <Link
+                        to="contact"
+                        smooth={true}
+                        duration={500}
+                        className="inline-flex w-fit cursor-pointer items-center justify-center rounded-lg border border-[#4F4D4D] bg-transparent px-6 py-3 text-[1rem] font-medium text-[#4F4D4D] no-underline transition-all duration-300 hover:bg-[#4F4D4D] hover:text-[#F8F9FA] max-md:w-full"
                     >
                         <FaEnvelopeOpenText style={{ marginRight: '8px' }} />
                         Contact Me
-                    </LightButton>
+                    </Link>
 
                     <DarkButton
                         href={cvFile}
-                        download="Puvanakopis_CV.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <FaDownload style={{ marginRight: '8px' }} />
                         Download CV
@@ -125,7 +128,7 @@ const Home = () => {
                     <span className="h-2.5 w-1.5 rounded-full bg-[#4F4D4D] animate-[scrollWheel_1.6s_ease-in-out_infinite]"></span>
                 </span>
             </Link>
-            
+
         </div>
     );
 };
