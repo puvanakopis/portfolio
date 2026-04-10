@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-scroll';
+import { AnimatePresence, motion as Motion } from 'framer-motion';
+import { navReveal } from '../utils/animations';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [isAnimating, setIsAnimating] = useState(false);
+  const navLinkClass = "relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:rounded-full after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -14,17 +16,14 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  const handleSectionChange = (section) => {
+  const handleSectionChange = useCallback((section) => {
     if (section === activeSection) return;
 
-    setIsAnimating(true);
     setTimeout(() => {
       setActiveSection(section);
-      setIsAnimating(false);
     }, 200);
-  };
+  }, [activeSection]);
 
-  // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'projects', 'contact'];
@@ -46,17 +45,23 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  }, [handleSectionChange]);
 
 
   return (
-    <nav className="fixed top-0 z-[100] h-[10vh] w-[100%] bg-[#F8F9FA] p-0 px-[10%] [font-family:'Lora',serif]">
+    <Motion.nav
+      className="fixed top-0 z-[100] h-[10vh] w-[100%] bg-[#F8F9FA]/90 p-0 px-[10%] backdrop-blur-md [font-family:'Lora',serif]"
+      variants={navReveal}
+      initial="hidden"
+      animate="show"
+    >
       <div className="flex w-full items-center justify-between pt-[10px]">
-        <div
-          className={`[font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem] ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
+        <Motion.div
+          className={`[font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem]`}
+          whileHover={{ scale: 1.03 }}
         >
           Portfolio
-        </div>
+        </Motion.div>
 
         {/* ------------ Desktop Navigation ------------ */}
         <div className="flex gap-10 max-lg:hidden">
@@ -66,136 +71,175 @@ const Navbar = () => {
             spy={true}
             smooth={true}
             duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
+            className={navLinkClass}
             onSetActive={() => handleSectionChange('about')}
           >
             About
+            {activeSection === 'about' && (
+              <Motion.span
+                className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-[#4F4D4D]"
+                layoutId="activeNavLine"
+              />
+            )}
           </Link>
           <Link
             to="skills"
             spy={true}
             smooth={true}
             duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
+            className={navLinkClass}
             onSetActive={() => handleSectionChange('skills')}
           >
             Skills
+            {activeSection === 'skills' && (
+              <Motion.span
+                className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-[#4F4D4D]"
+                layoutId="activeNavLine"
+              />
+            )}
           </Link>
           <Link
             to="qualifications"
             spy={true}
             smooth={true}
             duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
+            className={navLinkClass}
             onSetActive={() => handleSectionChange('qualifications')}
           >
             Qualifications
+            {activeSection === 'qualifications' && (
+              <Motion.span
+                className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-[#4F4D4D]"
+                layoutId="activeNavLine"
+              />
+            )}
           </Link>
           <Link
             to="projects"
             spy={true}
             smooth={true}
             duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
+            className={navLinkClass}
             onSetActive={() => handleSectionChange('projects')}
           >
             Projects
+            {activeSection === 'projects' && (
+              <Motion.span
+                className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-[#4F4D4D]"
+                layoutId="activeNavLine"
+              />
+            )}
           </Link>
           <Link
             to="contact"
             spy={true}
             smooth={true}
             duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
+            className={navLinkClass}
             onSetActive={() => handleSectionChange('contact')}
           >
             Contact
+            {activeSection === 'contact' && (
+              <Motion.span
+                className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-[#4F4D4D]"
+                layoutId="activeNavLine"
+              />
+            )}
           </Link>
         </div>
 
         {/* ------------ Mobile Hamburger Icon ------------ */}
-        <div
+        <Motion.div
           className={`z-[1001] hidden h-[21px] w-[30px] cursor-pointer flex-col justify-between max-lg:flex ${isOpen ? 'open' : ''}`}
           onClick={toggleMenu}
+          whileTap={{ scale: 0.95 }}
         >
           <span className={`block h-[3px] w-full bg-[#4F4D4D] transition-all duration-300 ${isOpen ? 'translate-y-[9px] rotate-45' : ''}`}></span>
           <span className={`block h-[3px] w-full bg-[#4F4D4D] transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
           <span className={`block h-[3px] w-full bg-[#4F4D4D] transition-all duration-300 ${isOpen ? '-translate-y-[9px] -rotate-45' : ''}`}></span>
-        </div>
+        </Motion.div>
 
         {/* ------------ Mobile Navigation ------------ */}
-        <div
-          className={`fixed left-0 top-0 z-[1000] flex h-[110vh] w-full flex-col items-center justify-center gap-10 bg-[#F8F9FA] transition-all duration-500 lg:hidden ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
-        >
-          <Link
-            to="home"
-            spy={true}
-            smooth={true}
-            duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
-            onClick={closeMenu}
-            onSetActive={() => handleSectionChange('home')}
-          >
-            Home
-          </Link>
-          <Link
-            to="about"
-            spy={true}
-            smooth={true}
-            duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
-            onClick={closeMenu}
-            onSetActive={() => handleSectionChange('about')}
-          >
-            About
-          </Link>
-          <Link
-            to="skills"
-            spy={true}
-            smooth={true}
-            duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
-            onClick={closeMenu}
-            onSetActive={() => handleSectionChange('skills')}
-          >
-            Skills
-          </Link>
-          <Link
-            to="qualifications"
-            spy={true}
-            smooth={true}
-            duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
-            onClick={closeMenu}
-            onSetActive={() => handleSectionChange('qualifications')}
-          >
-            Qualifications
-          </Link>
-          <Link
-            to="projects"
-            spy={true}
-            smooth={true}
-            duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
-            onClick={closeMenu}
-            onSetActive={() => handleSectionChange('projects')}
-          >
-            Projects
-          </Link>
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            duration={500}
-            className="relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full"
-            onClick={closeMenu}
-            onSetActive={() => handleSectionChange('contact')}
-          >
-            Contact
-          </Link>
-        </div>
+        <AnimatePresence>
+          {isOpen && (
+            <Motion.div
+              className="fixed left-0 top-0 z-[1000] flex h-[110vh] w-full flex-col items-center justify-center gap-10 bg-[#F8F9FA] lg:hidden"
+              initial={{ y: '-100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '-100%', opacity: 0 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                to="home"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className={navLinkClass}
+                onClick={closeMenu}
+                onSetActive={() => handleSectionChange('home')}
+              >
+                Home
+              </Link>
+              <Link
+                to="about"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className={navLinkClass}
+                onClick={closeMenu}
+                onSetActive={() => handleSectionChange('about')}
+              >
+                About
+              </Link>
+              <Link
+                to="skills"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className={navLinkClass}
+                onClick={closeMenu}
+                onSetActive={() => handleSectionChange('skills')}
+              >
+                Skills
+              </Link>
+              <Link
+                to="qualifications"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className={navLinkClass}
+                onClick={closeMenu}
+                onSetActive={() => handleSectionChange('qualifications')}
+              >
+                Qualifications
+              </Link>
+              <Link
+                to="projects"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className={navLinkClass}
+                onClick={closeMenu}
+                onSetActive={() => handleSectionChange('projects')}
+              >
+                Projects
+              </Link>
+              <Link
+                to="contact"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className={navLinkClass}
+                onClick={closeMenu}
+                onSetActive={() => handleSectionChange('contact')}
+              >
+                Contact
+              </Link>
+            </Motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </Motion.nav>
   );
 };
 

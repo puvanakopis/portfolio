@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import { AnimatePresence, motion } from 'framer-motion';
 import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.png';
 import project3 from '../assets/project3.png';
 import project4 from '../assets/project4.png';
+import { headingReveal, itemFadeUp, staggerContainer, viewportDefault } from '../utils/animations';
 
 const Projects = () => {
     const [activeFilter, setActiveFilter] = useState('all');
@@ -92,12 +94,24 @@ const Projects = () => {
 
     return (
         <section className="relative flex w-full flex-col pb-[20vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="projects">
-            <h1 className="flex w-fit min-h-[10vh] items-start justify-between text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
+            <motion.h1
+                className="flex w-fit min-h-[10vh] items-start justify-between text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]"
+                variants={headingReveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={viewportDefault}
+            >
                 My Projects
-            </h1>
+            </motion.h1>
 
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-                <button
+            <motion.div
+                className="mt-4 flex flex-wrap items-center gap-3"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={viewportDefault}
+            >
+                <motion.button
                     type="button"
                     onClick={() => {
                         setActiveFilter('all');
@@ -107,10 +121,12 @@ const Projects = () => {
                         ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
+                    variants={itemFadeUp}
+                    whileHover={{ y: -2 }}
                 >
                     All ({allProjectsCount})
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                     type="button"
                     onClick={() => {
                         setActiveFilter('web');
@@ -120,10 +136,12 @@ const Projects = () => {
                         ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
+                    variants={itemFadeUp}
+                    whileHover={{ y: -2 }}
                 >
                     Web ({webProjectsCount})
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                     type="button"
                     onClick={() => {
                         setActiveFilter('ai');
@@ -133,70 +151,91 @@ const Projects = () => {
                         ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
+                    variants={itemFadeUp}
+                    whileHover={{ y: -2 }}
                 >
                     AI Project ({aiProjectsCount})
-                </button>
-            </div>
+                </motion.button>
+            </motion.div>
 
-            <div className="flex flex-col items-center justify-center gap-12 pt-[10vh] max-lg:gap-8 max-lg:pt-[8vh] max-md:pt-[6vh] max-[600px]:pt-[5vh] max-[480px]:gap-6 max-[480px]:pt-[4vh]">
+            <motion.div
+                className="flex flex-col items-center justify-center gap-12 pt-[10vh] max-lg:gap-8 max-lg:pt-[8vh] max-md:pt-[6vh] max-[600px]:pt-[5vh] max-[480px]:gap-6 max-[480px]:pt-[4vh]"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={viewportDefault}
+            >
                 <div className="grid w-full grid-cols-3 gap-6 max-[1200px]:grid-cols-2 max-lg:grid-cols-1">
-                    {visibleProjects.map((project) => (
-                        <article
-                            key={project.id}
-                            className="overflow-hidden rounded-xl border border-[#c7c2b8] bg-white/80"
-                        >
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="h-[220px] w-full object-cover"
-                            />
+                    <AnimatePresence mode="sync">
+                        {visibleProjects.map((project) => (
+                            <motion.article
+                                key={project.id}
+                                className="overflow-hidden rounded-xl border border-[#c7c2b8] bg-white/80"
+                                layout
+                                variants={itemFadeUp}
+                                initial={{ opacity: 0, y: 26, scale: 0.96 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: 24, scale: 0.98 }}
+                                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                                whileHover={{ y: -5 }}
+                            >
+                                <motion.img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="h-[220px] w-full object-cover"
+                                    whileHover={{ scale: 1.04 }}
+                                    transition={{ duration: 0.5 }}
+                                />
 
-                            <div className="flex min-h-[250px] flex-col gap-4 p-5">
-                                <h3 className="text-[1.35rem] font-semibold text-[#4F4D4D]">
-                                    {project.title}
-                                </h3>
-                                <p className="grow text-[1rem] text-slate-700">
-                                    {project.description}
-                                </p>
+                                <div className="flex min-h-[250px] flex-col gap-4 p-5">
+                                    <h3 className="text-[1.35rem] font-semibold text-[#4F4D4D]">
+                                        {project.title}
+                                    </h3>
+                                    <p className="grow text-[1rem] text-slate-700">
+                                        {project.description}
+                                    </p>
 
-                                <div className="flex flex-wrap gap-2">
-                                    {project.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="rounded-full bg-[#4F4D4D] px-3 py-1 text-[0.78rem] text-white"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="rounded-full bg-[#4F4D4D] px-3 py-1 text-[0.78rem] text-white"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
 
-                                <div className="flex gap-3 max-[480px]:flex-col">
-                                    {project.demolink && (
-                                        <a
-                                            href={project.demolink}
+                                    <div className="flex gap-3 max-[480px]:flex-col">
+                                        {project.demolink && (
+                                            <motion.a
+                                                href={project.demolink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex flex-1 items-center justify-center rounded-md border border-[#4F4D4D] bg-white px-4 py-2 text-[0.92rem] font-medium text-[#4F4D4D] no-underline"
+                                                aria-label={`View ${project.title} demo`}
+                                                whileHover={{ y: -2 }}
+                                            >
+                                                <FaExternalLinkAlt style={{ marginRight: '6px' }} />
+                                                Demo
+                                            </motion.a>
+                                        )}
+                                        <motion.a
+                                            href={project.gitlink}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex flex-1 items-center justify-center rounded-md border border-[#4F4D4D] bg-white px-4 py-2 text-[0.92rem] font-medium text-[#4F4D4D] no-underline"
-                                            aria-label={`View ${project.title} demo`}
+                                            className="flex flex-1 items-center justify-center rounded-md border border-[#4F4D4D] bg-[#4F4D4D] px-4 py-2 text-[0.92rem] font-medium text-white no-underline"
+                                            aria-label={`View ${project.title} on GitHub`}
+                                            whileHover={{ y: -2 }}
                                         >
-                                            <FaExternalLinkAlt style={{ marginRight: '6px' }} />
-                                            Demo
-                                        </a>
-                                    )}
-                                    <a
-                                        href={project.gitlink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex flex-1 items-center justify-center rounded-md border border-[#4F4D4D] bg-[#4F4D4D] px-4 py-2 text-[0.92rem] font-medium text-white no-underline"
-                                        aria-label={`View ${project.title} on GitHub`}
-                                    >
-                                        <FaGithub style={{ marginRight: '6px' }} />
-                                        GitHub
-                                    </a>
+                                            <FaGithub style={{ marginRight: '6px' }} />
+                                            GitHub
+                                        </motion.a>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
-                    ))}
+                            </motion.article>
+                        ))}
+                    </AnimatePresence>
                 </div>
 
                 {filteredProjects.length > 6 && !showAllProjects && (
@@ -208,7 +247,7 @@ const Projects = () => {
                         Show All Projects
                     </button>
                 )}
-            </div>
+            </motion.div>
         </section>
     );
 };
