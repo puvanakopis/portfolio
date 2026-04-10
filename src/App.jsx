@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Home from './pages/Home';
@@ -13,7 +12,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Router>
-      <div className="app-container">
+      <div className="min-h-screen bg-[#F8F9FA] px-[10%] text-[25px] text-[#4F4D4D] [font-family:'Lora',serif] max-lg:text-[20px] max-md:px-[5%] max-md:text-[18px]">
         <Navbar />
         <main>
           <Home id="home" />
@@ -24,7 +23,7 @@ function App() {
           <Contact id="contact" />
           <FloatingHomeButton />
         </main>
-        <Footer/>
+        <Footer />
       </div>
     </Router>
   );

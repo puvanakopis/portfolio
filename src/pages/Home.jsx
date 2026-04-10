@@ -1,26 +1,23 @@
 import { useState, useEffect } from 'react';
 import { FaDownload, FaEnvelopeOpenText } from 'react-icons/fa';
-import './Home.css';
+import { MdOutlineSmartToy } from "react-icons/md";
 import cvFile from '../assets/Puvankopis_CV.pdf';
 import profileImage from '../assets/puvi.png';
-import facebook from '../assets/Facebook.png';
-import GitHub from '../assets/GitHub.png';
-import Instagram from '../assets/Instagram.png';
-import LinkedIn from '../assets/LinkedIn.png';
-import Twitter from '../assets/twitter.png'
-import { Link } from 'react-scroll';
+import LightButton from '../components/buttons/LightButton';
+import DarkButton from '../components/buttons/DarkButton';
+
+const TITLES = ["Frontend Developer", "Backend Developer", "AI/ML Engineer"];
 
 const Home = () => {
-    const titles = ["Frontend Developer", "Backend Developer", "UI/UX Designer", "AI/ML Engineer"];
     const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
     const [displayedText, setDisplayedText] = useState('');
     const [charIndex, setCharIndex] = useState(0);
 
     // Typing effect
     useEffect(() => {
-        if (charIndex < titles[currentTitleIndex].length) {
+        if (charIndex < TITLES[currentTitleIndex].length) {
             const timeout = setTimeout(() => {
-                setDisplayedText((prev) => prev + titles[currentTitleIndex][charIndex]);
+                setDisplayedText((prev) => prev + TITLES[currentTitleIndex][charIndex]);
                 setCharIndex((prev) => prev + 1);
             }, 100);
             return () => clearTimeout(timeout);
@@ -28,66 +25,90 @@ const Home = () => {
             const timeout = setTimeout(() => {
                 setDisplayedText('');
                 setCharIndex(0);
-                setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
+                setCurrentTitleIndex((prev) => (prev + 1) % TITLES.length);
             }, 2000);
             return () => clearTimeout(timeout);
         }
-    }, [charIndex, currentTitleIndex, titles]);
+    }, [charIndex, currentTitleIndex]);
 
     return (
-        <div className="home" id="home">
-            {/* ------------- Social Media ------------- */}
-            <div className="home-socials">
-                <a href='https://www.facebook.com/puvanakopis' target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <img src={facebook} alt="Facebook" />
-                    <span className="social-name">Facebook</span>
-                </a>
-                <a href='https://github.com/puvanakopis' target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <img src={GitHub} alt="GitHub" />
-                    <span className="social-name">GitHub</span>
-                </a>
-                <a href='https://www.instagram.com/puvanakopis/?hl=en' target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <img src={Instagram} alt="Instagram" />
-                    <span className="social-name">Instagram</span>
-                </a>
-                <a href='https://www.linkedin.com/in/puvanakopis/' target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <img src={LinkedIn} alt="LinkedIn" />
-                    <span className="social-name">LinkedIn</span>
-                </a>
-                <a href='https://x.com/puvanakopis' target="_blank" rel="noopener noreferrer" className="social-icon">
-                    <img src={Twitter} alt="" />                    <span className="social-name">Twitter</span>
-                </a>
-            </div>
+        <div
+            className="flex h-fit w-full items-center justify-between pt-[10vh] min-[1024px]:min-h-[100vh] max-lg:flex-col max-lg:text-center"
+            id="home"
+        >
+            {/* ---------------- LEFT CONTENT ---------------- */}
+            <div className="flex w-1/2 flex-col items- justify-center max-lg:order-1 max-lg:mb-[30px] max-lg:w-full">
 
-            {/* ------------- Profile Info ------------- */}
-            <div className="home-profile">
-                <h2 className="home-greeting">Hello, I'm</h2>
-                <div className="home-name">Puvankopis</div>
-                <h2 className="home-title">{displayedText}<span className="cursor">|</span></h2>
+                {/* Heading */}
+                <h2 className="mb-[0px] text-[24px] font-medium animate-[heroRise_0.7s_ease-out] [animation-fill-mode:both]">
+                    Hi, I'm
+                </h2>
 
-                <div className="home-actions">
-                    <a href={cvFile} download="Puvankopis_CV.pdf" className="btn btn-light">
-                        <FaDownload style={{ marginRight: '8px' }} />
-                        Download CV
-                    </a>
-                    <Link
-                        to="contact"
-                        spy={true}
-                        smooth={true}
-                        offset={0}
-                        duration={1000}
-                        className="btn btn-dark"
+                {/* Name */}
+                <div className="mb-[30px] font-extrabold leading-none text-[70px] max-md:text-[clamp(32px,8vw,50px)] animate-[heroRise_0.85s_ease-out] [animation-delay:120ms] [animation-fill-mode:both]">
+                    Puvankopis
+                </div>
+
+                {/* Typing role */}
+                <h2 className="mb-[30px] h-[30px] text-[30px] font-medium animate-[heroRise_0.9s_ease-out] [animation-delay:220ms] [animation-fill-mode:both]">
+                    {displayedText}
+                    <span className="animate-pulse">|</span>
+                </h2>
+
+                {/* Description */}
+                <p className="mb-[30px] max-w-xl text-base md:text-lg mb-6 animate-[heroFade_0.9s_ease-out] [animation-delay:320ms] [animation-fill-mode:both]">
+                    I specialize in architecting robust server-side applications and integrating artificial intelligence into modern web solutions. Turning complex logic into seamless experiences.
+                </p>
+
+                {/* Buttons */}
+                <div className="mt-5 flex gap-5 max-md:flex-col max-md:items-center max-md:gap-[10px] animate-[heroRise_1s_ease-out] [animation-delay:420ms] [animation-fill-mode:both]">
+                    <LightButton
+                        href="#contact"
                     >
                         <FaEnvelopeOpenText style={{ marginRight: '8px' }} />
-                        Contact Info
-                    </Link>
+                        Contact Me
+                    </LightButton>
 
+                    <DarkButton
+                        href={cvFile}
+                        download="Puvankopis_CV.pdf"
+                    >
+                        <FaDownload style={{ marginRight: '8px' }} />
+                        Download CV
+                    </DarkButton>
                 </div>
             </div>
 
-            {/* ------------- Profile Image ------------- */}
-            <div className="home-image">
-                <img src={profileImage} alt="Puvankopis" />
+
+            {/* ---------------- RIGHT IMAGE SECTION (NEW STYLE) ---------------- */}
+            <div className="group relative flex w-[30%] justify-center max-lg:order-2 max-lg:mb-8 max-lg:w-full animate-[heroRise_1s_ease-out] [animation-delay:260ms] [animation-fill-mode:both]">
+                {/* Glow Background */}
+                <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-[#4F4D4D]/35 via-[#4F4D4D]/20 to-[#4F4D4D]/10 blur-3xl opacity-80 transition-all duration-700 group-hover:scale-105 animate-[pulseSoft_3.2s_ease-in-out_infinite]"></div>
+
+                {/* Main Image Card */}
+                <div className="relative isolate w-full max-w-[400px] overflow-hidden rounded-2xl [clip-path:inset(0_round_1rem)] border-4 border-white/90 shadow-[0_22px_45px_-15px_rgba(15,23,42,0.35)] ring-1 ring-slate-100/70 rotate-2 transform-gpu transition-all duration-500 group-hover:rotate-0 group-hover:-translate-y-1 animate-[floatY_5s_ease-in-out_infinite]">
+                    <img
+                        src={profileImage}
+                        alt="Puvankopis"
+                        className="h-full w-full rounded-[inherit] object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+
+                    <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-t from-slate-900/25 via-transparent to-transparent"></div>
+
+                    <div className="absolute right-4 top-4 rounded-full border border-white/60 bg-white/80 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-700 backdrop-blur-md animate-[heroFade_0.9s_ease-out] [animation-delay:600ms] [animation-fill-mode:both]">
+                        Open to Work
+                    </div>
+
+                    <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-xl border border-white/70 bg-white/90 p-3 shadow-lg backdrop-blur-md animate-[heroFade_0.9s_ease-out] [animation-delay:700ms] [animation-fill-mode:both]">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4F4D4D]/15 text-[#4F4D4D] shadow-inner">
+                            <MdOutlineSmartToy />
+                        </div>
+                        <div>
+                            <p className="text-xs text-slate-500">Focus</p>
+                            <p className="text-sm font-bold text-slate-800">AI + Backend</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
