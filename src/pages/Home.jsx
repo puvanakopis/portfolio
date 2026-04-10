@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FaDownload, FaEnvelopeOpenText } from 'react-icons/fa';
 import { MdOutlineSmartToy } from "react-icons/md";
-import cvFile from '../assets/Puvankopis_CV.pdf';
+import { Link } from 'react-scroll';
+import cvFile from '../assets/Puvanakopis_CV.pdf';
 import profileImage from '../assets/puvi.png';
 import LightButton from '../components/buttons/LightButton';
 import DarkButton from '../components/buttons/DarkButton';
@@ -33,7 +34,7 @@ const Home = () => {
 
     return (
         <div
-            className="flex h-fit w-full items-center justify-between pt-[10vh] min-[1024px]:min-h-[100vh] max-lg:flex-col max-lg:text-center"
+            className="relative flex h-fit w-full items-center justify-between pb-14 pt-[10vh] min-[1024px]:min-h-[100vh] max-lg:flex-col max-lg:text-center"
             id="home"
         >
             {/* ---------------- LEFT CONTENT ---------------- */}
@@ -46,7 +47,7 @@ const Home = () => {
 
                 {/* Name */}
                 <div className="mb-[30px] font-extrabold leading-none text-[70px] max-md:text-[clamp(32px,8vw,50px)] animate-[heroRise_0.85s_ease-out] [animation-delay:120ms] [animation-fill-mode:both]">
-                    Puvankopis
+                    Puvanakopis
                 </div>
 
                 {/* Typing role */}
@@ -71,7 +72,7 @@ const Home = () => {
 
                     <DarkButton
                         href={cvFile}
-                        download="Puvankopis_CV.pdf"
+                        download="Puvanakopis_CV.pdf"
                     >
                         <FaDownload style={{ marginRight: '8px' }} />
                         Download CV
@@ -89,7 +90,7 @@ const Home = () => {
                 <div className="relative isolate w-full max-w-[400px] overflow-hidden rounded-2xl [clip-path:inset(0_round_1rem)] border-4 border-white/90 shadow-[0_22px_45px_-15px_rgba(15,23,42,0.35)] ring-1 ring-slate-100/70 rotate-2 transform-gpu transition-all duration-500 group-hover:rotate-0 group-hover:-translate-y-1 animate-[floatY_5s_ease-in-out_infinite]">
                     <img
                         src={profileImage}
-                        alt="Puvankopis"
+                        alt="Puvanakopis"
                         className="h-full w-full rounded-[inherit] object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
 
@@ -110,6 +111,21 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
+            <Link
+                to="about"
+                smooth={true}
+                duration={700}
+                offset={0}
+                className="absolute bottom-2 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center gap-2 text-[#4F4D4D]/75 animate-[heroFade_1.2s_ease-out] [animation-delay:900ms] [animation-fill-mode:both]"
+                aria-label="Scroll down to about section"
+            >
+                <span className="text-[22px] font-medium">Scroll down</span>
+                <span className="relative flex h-[54px] w-[32px] items-start justify-center rounded-full border-2 border-[#4F4D4D]/60 p-[6px]">
+                    <span className="h-2.5 w-1.5 rounded-full bg-[#4F4D4D] animate-[scrollWheel_1.6s_ease-in-out_infinite]"></span>
+                </span>
+            </Link>
+            
         </div>
     );
 };

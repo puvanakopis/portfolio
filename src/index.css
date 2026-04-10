@@ -66,3 +66,20 @@
         transform: scale(1.04);
     }
 }
+
+@keyframes scrollWheel {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateY(24px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 0;
+    }
+}

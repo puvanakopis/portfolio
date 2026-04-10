@@ -33,7 +33,7 @@ const Qualifications = () => {
 
   return (
     <section className="w-full pb-[15vh] min-[1024px]:min-h-[85vh]" id="qualifications">
-      <div className="z-[999] flex w-fit items-start justify-start pb-[15vh] [font-family:'Cormorant_Garamond',serif] text-[55px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem]">
+      <div className="z-[999] flex w-fit items-start justify-start pb-[15vh] font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem]">
         Qualifications
       </div>
       <div className="mx-auto max-w-[1000px] gap-12 px-8">

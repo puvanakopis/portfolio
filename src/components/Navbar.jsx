@@ -60,7 +60,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed left-[10%] top-0 z-[1000] h-[10vh] w-[80%] bg-[#F8F9FA] p-0 max-lg:left-[5%] max-lg:w-[90%]">
+    <nav className="fixed top-0 z-[100] h-[10vh] w-[100%] bg-[#F8F9FA] p-0 px-[10%] [font-family:'Lora',serif]">
       <div className="flex w-full items-center justify-between pt-[10px]">
         <div
           className={`[font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem] ${isAnimating ? 'opacity-0' : 'opacity-100'}`}

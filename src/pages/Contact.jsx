@@ -42,7 +42,7 @@ const Contact = () => {
         </div>
       )}
 
-      <div className="z-[999] flex w-fit items-start justify-start pt-3 pb-[10vh] [font-family:'Cormorant_Garamond',serif] text-[55px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[5vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
+      <div className="flex w-fit items-start justify-start pt-3 pb-[10vh] font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[5vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
         Contact Me
       </div>
       <div className="flex flex-row max-lg:flex-col">

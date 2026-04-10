@@ -105,7 +105,7 @@ const Skills = () => {
 
   return (
     <div className="flex w-full flex-col pb-[20vh] min-[1024px]:min-h-[85vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="skills">
-      <div className="z-[999] flex w-fit items-start justify-start [font-family:'Cormorant_Garamond',serif] text-[55px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
+      <div className="flex w-fit items-start justify-start font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
         My Skills
       </div>
       <div className="relative box-border flex flex-col items-center justify-center gap-12 overflow-hidden pt-[10vh] max-lg:gap-8 max-lg:pt-[8vh] max-md:pt-[6vh] max-[600px]:pt-[5vh] max-[480px]:gap-6 max-[480px]:pt-[4vh]">

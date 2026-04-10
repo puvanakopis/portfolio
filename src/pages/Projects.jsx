@@ -131,7 +131,7 @@ const Projects = () => {
 
     return (
         <div className="flex h-fit w-full flex-col pb-[20vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="projects">
-            <div className="z-[999] flex w-fit items-start justify-start pb-[10vh] [font-family:'Cormorant_Garamond',serif] text-[55px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
+            <div className="flex w-fit items-start justify-start pb-[10vh] font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
                 My Projects
             </div>
 

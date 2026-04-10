@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="mx-auto w-[80%] max-lg:w-[90%]">
         <div className="flex flex-col items-center gap-y-[1.8rem] gap-x-8">
           <hr className="w-full border-t border-[#4F4D4D]/20" />
-          <div className="[font-family:'Cormorant_Garamond',serif] text-[2.5rem] font-extrabold text-[#4F4D4D] max-md:text-[2rem]">
+          <div className="font-extrabold text-[2.5rem] font-extrabold text-[#4F4D4D] max-md:text-[2rem]">
             <span>Puvankopis</span>
           </div>
 
@@ -89,7 +89,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-[#4F4D4D]/10 pt-4 text-center text-[0.9rem] max-[480px]:text-[0.8rem]">
+        <div className="pt-4 text-center text-[0.9rem] max-[480px]:text-[0.8rem]">
           <p>&copy; {new Date().getFullYear()} Puvankopis. All rights reserved.</p>
         </div>
       </div>
