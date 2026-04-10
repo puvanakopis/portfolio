@@ -32,61 +32,111 @@ const Qualifications = () => {
   ];
 
   return (
-    <section className="w-full pb-[15vh] min-[1024px]:min-h-[85vh]" id="qualifications">
-      <div className="z-[999] flex w-fit items-start justify-start pb-[15vh] font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem]">
+    <section className="w-full pb-[16vh] min-[1024px]:min-h-[90vh]" id="qualifications">
+      <div className="z-[999] flex w-fit items-start justify-start pb-[9vh] font-extrabold text-[45px] text-[#4F4D4D] transition-all duration-300 animate-[heroRise_0.75s_ease-out] [animation-fill-mode:both] max-lg:text-[3rem] max-[480px]:text-[2rem]">
         Qualifications
       </div>
-      <div className="mx-auto max-w-[1000px] gap-12 px-8">
 
-        {/* ---------------- Tabs for education and experience ---------------- */}
-        <div className="mb-8 flex justify-center gap-4 max-[769px]:flex-col max-[769px]:items-center">
-          <div
-            className={`flex cursor-pointer items-center rounded-lg border-2 border-[#4F4D4D] px-6 py-[0.8rem] transition-all duration-300 max-[769px]:w-[80%] max-[769px]:justify-center ${activeTab === 'education' ? 'bg-[#4F4D4D] text-[#F8F9FA]' : 'bg-[#F8F9FA] text-[#4F4D4D] hover:bg-[#4F4D4D] hover:text-[#F8F9FA]'}`}
+      <div className="mx-auto max-w-[1000px] gap-12 px-2 md:px-4">
+
+        {/* Tabs */}
+        <div className="mb-10 flex justify-center gap-4 animate-[heroFade_0.9s_ease-out] [animation-delay:120ms] [animation-fill-mode:both] max-[769px]:flex-col max-[769px]:items-center">
+          <button
+            type="button"
+            className={`group flex cursor-pointer items-center rounded-xl border border-[#4F4D4D]/50 px-6 py-[0.85rem] shadow-[0_10px_25px_-18px_rgba(15,23,42,0.55)] backdrop-blur-sm transition-all duration-300 max-[769px]:w-[85%] max-[769px]:justify-center ${
+              activeTab === 'education'
+                ? 'bg-[#4F4D4D] text-[#F8F9FA] ring-1 ring-[#4F4D4D]/30'
+                : 'bg-white/85 text-[#4F4D4D] hover:-translate-y-0.5 hover:bg-[#4F4D4D] hover:text-[#F8F9FA]'
+            }`}
             onClick={() => setActiveTab('education')}
           >
-            <FaGraduationCap className="mr-2 text-[1.2rem]" />
+            <FaGraduationCap className="mr-2 text-[1.1rem] transition-transform duration-300 group-hover:scale-110" />
             <span>Education</span>
-          </div>
-          <div
-            className={`flex cursor-pointer items-center rounded-lg border-2 border-[#4F4D4D] px-6 py-[0.8rem] transition-all duration-300 max-[769px]:w-[80%] max-[769px]:justify-center ${activeTab === 'experience' ? 'bg-[#4F4D4D] text-[#F8F9FA]' : 'bg-[#F8F9FA] text-[#4F4D4D] hover:bg-[#4F4D4D] hover:text-[#F8F9FA]'}`}
+          </button>
+
+          <button
+            type="button"
+            className={`group flex cursor-pointer items-center rounded-xl border border-[#4F4D4D]/50 px-6 py-[0.85rem] shadow-[0_10px_25px_-18px_rgba(15,23,42,0.55)] backdrop-blur-sm transition-all duration-300 max-[769px]:w-[85%] max-[769px]:justify-center ${
+              activeTab === 'experience'
+                ? 'bg-[#4F4D4D] text-[#F8F9FA] ring-1 ring-[#4F4D4D]/30'
+                : 'bg-white/85 text-[#4F4D4D] hover:-translate-y-0.5 hover:bg-[#4F4D4D] hover:text-[#F8F9FA]'
+            }`}
             onClick={() => setActiveTab('experience')}
           >
-            <FaBriefcase className="mr-2 text-[1.2rem]" />
+            <FaBriefcase className="mr-2 text-[1.1rem] transition-transform duration-300 group-hover:scale-110" />
             <span>Experience</span>
-          </div>
+          </button>
         </div>
 
-
-        {/* ---------------- Content ---------------- */}
+        {/* Content */}
         <div>
-          <div className="relative py-8 before:absolute before:top-0 before:bottom-0 before:left-1/2 before:w-[2px] before:-translate-x-1/2 before:bg-[#4F4D4D] max-[769px]:py-0 max-[769px]:before:hidden">
-            {activeTab === 'education' ? (
-              educationData.map((item) => (
-                <div key={item.id} className="relative mb-8 w-full before:absolute before:top-5 before:z-[1] before:h-4 before:w-4 before:rounded-full before:bg-[#4F4D4D] before:left-1/2 before:-translate-x-2 max-[769px]:before:hidden">
-                  <div className={`relative w-[45%] rounded-lg border-2 border-[#4F4D4D] bg-[#F8F9FA] p-6 shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 max-[769px]:ml-8 max-[769px]:w-[calc(100%-3rem)] max-[769px]:text-left ${item.side === 'left' ? 'ml-[-1.5rem] mr-auto text-left' : 'ml-auto mr-[-1.5rem] text-right'}`}>
-                    <h3 className="mb-2 text-[1.2rem] text-[#4F4D4D]">{item.title}</h3>
-                    <p className="mb-2 text-[1rem]">{item.institution}</p>
-                    <div className={`mb-2 flex items-center text-[0.9rem] ${item.side === 'right' ? 'justify-end max-[769px]:justify-start' : 'justify-start'}`}>
-                      <FaCalendarAlt className="mr-2" />
-                      <span>{item.period}</span>
+          <div className="relative py-8 before:absolute before:top-0 before:bottom-0 before:left-1/2 before:w-[2px] before:-translate-x-1/2 before:bg-gradient-to-b before:from-[#4F4D4D]/20 before:via-[#4F4D4D]/65 before:to-[#4F4D4D]/20 animate-[heroFade_0.9s_ease-out] [animation-delay:220ms] [animation-fill-mode:both] max-[769px]:py-0 max-[769px]:before:hidden">
+
+            {activeTab === 'education'
+              ? educationData.map((item, index) => (
+                  <div
+                    key={item.id}
+                    className="relative mb-8 w-full before:absolute before:top-6 before:z-[1] before:h-4 before:w-4 before:rounded-full before:border-2 before:border-white/70 before:bg-[#4F4D4D] before:shadow before:left-1/2 before:-translate-x-2 max-[769px]:before:hidden"
+                  >
+                    <div
+                      className={`group relative w-[45%] rounded-xl border border-[#c7c2b8] bg-white/80 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md animate-[heroRise_0.75s_ease-out] [animation-fill-mode:both] max-[769px]:ml-8 max-[769px]:w-[calc(100%-3rem)] max-[769px]:text-left ${
+                        item.side === 'left'
+                          ? 'ml-[-1.5rem] mr-auto text-left'
+                          : 'ml-auto mr-[-1.5rem] text-right'
+                      }`}
+                      style={{ animationDelay: `${120 + index * 120}ms` }}
+                    >
+                      <h3 className="mb-1 text-[1.1rem] font-semibold text-[#4F4D4D]">
+                        {item.title}
+                      </h3>
+                      <p className="mb-2 text-sm text-slate-700">
+                        {item.institution}
+                      </p>
+                      <div
+                        className={`flex items-center gap-2 text-sm text-slate-700 ${
+                          item.side === 'right'
+                            ? 'justify-end max-[769px]:justify-start'
+                            : 'justify-start'
+                        }`}
+                      >
+                        <FaCalendarAlt className="text-[#4F4D4D]" />
+                        <span>{item.period}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            ) : (
-              experienceData.map((item) => (
-                <div key={item.id} className="relative mb-8 w-full before:absolute before:top-5 before:z-[1] before:h-4 before:w-4 before:rounded-full before:bg-[#4F4D4D] before:left-1/2 before:-translate-x-2 max-[769px]:before:hidden">
-                  <div className={`relative w-[45%] rounded-lg border-2 border-[#4F4D4D] bg-[#F8F9FA] p-6 shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-all duration-300 max-[769px]:ml-8 max-[769px]:w-[calc(100%-3rem)] max-[769px]:text-left ${item.side === 'left' ? 'ml-[-1.5rem] mr-auto text-left' : 'ml-auto mr-[-1.5rem] text-right'}`}>
-                    <h3 className="mb-2 text-[1.2rem] text-[#4F4D4D]">{item.title}</h3>
-                    <p className="mb-2 text-[1rem]">{item.company}</p>
-                    <div className={`mb-2 flex items-center text-[0.9rem] ${item.side === 'right' ? 'justify-end max-[769px]:justify-start' : 'justify-start'}`}>
-                      <FaCalendarAlt className="mr-2" />
-                      <span>{item.period}</span>
+                ))
+              : experienceData.map((item, index) => (
+                  <div
+                    key={item.id}
+                    className="relative mb-8 w-full before:absolute before:top-6 before:z-[1] before:h-4 before:w-4 before:rounded-full before:border-2 before:border-white/70 before:bg-[#4F4D4D] before:shadow before:left-1/2 before:-translate-x-2 max-[769px]:before:hidden"
+                  >
+                    <div
+                      className={`group relative w-[45%] rounded-xl border border-[#c7c2b8] bg-white/80 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md animate-[heroRise_0.75s_ease-out] [animation-fill-mode:both] max-[769px]:ml-8 max-[769px]:w-[calc(100%-3rem)] max-[769px]:text-left ${
+                        item.side === 'left'
+                          ? 'ml-[-1.5rem] mr-auto text-left'
+                          : 'ml-auto mr-[-1.5rem] text-right'
+                      }`}
+                      style={{ animationDelay: `${120 + index * 120}ms` }}
+                    >
+                      <h3 className="mb-1 text-[1.1rem] font-semibold text-[#4F4D4D]">
+                        {item.title}
+                      </h3>
+                      <p className="mb-2 text-sm text-slate-700">
+                        {item.company}
+                      </p>
+                      <div
+                        className={`flex items-center gap-2 text-sm text-slate-700 ${
+                          item.side === 'right'
+                            ? 'justify-end max-[769px]:justify-start'
+                            : 'justify-start'
+                        }`}
+                      >
+                        <FaCalendarAlt className="text-[#4F4D4D]" />
+                        <span>{item.period}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            )}
+                ))}
           </div>
         </div>
       </div>
