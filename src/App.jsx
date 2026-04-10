@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion as Motion, useScroll, useSpring } from 'framer-motion';
 import Navbar from "./components/Navbar";
 import Home from './pages/Home';
 import About from './pages/About';
@@ -20,18 +20,18 @@ function App() {
 
   return (
     <Router>
-      <motion.div
+      <Motion.div
         className="fixed left-0 top-0 z-[200] h-[4px] w-full origin-left bg-[#4F4D4D]"
         style={{ scaleX }}
       />
 
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <motion.div
+        <Motion.div
           className="absolute -left-24 top-[8%] h-[340px] w-[340px] rounded-full bg-[#4F4D4D]/10 blur-3xl"
           animate={{ x: [0, 32, -12, 0], y: [0, 24, -18, 0], scale: [1, 1.06, 0.98, 1] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <motion.div
+        <Motion.div
           className="absolute -right-32 top-[42%] h-[420px] w-[420px] rounded-full bg-[#4F4D4D]/8 blur-3xl"
           animate={{ x: [0, -26, 14, 0], y: [0, -20, 10, 0], scale: [1, 0.96, 1.04, 1] }}
           transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
@@ -39,8 +39,8 @@ function App() {
       </div>
 
       <Navbar />
-      <motion.div
-        className="min-h-screen bg-[#F8F9FA] px-[10%] text-[25px] text-[#4F4D4D] [font-family:'Lora',serif] max-lg:text-[20px] max-md:px-[5%] max-md:text-[18px]"
+      <Motion.div
+        className="min-h-screen bg-[#F8F9FA] px-4 pt-[10vh] text-[18px] text-[#4F4D4D] [font-family:'Lora',serif] sm:px-6 md:px-10 lg:px-[8%] xl:px-[10%] md:text-[19px] lg:text-[20px]"
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
@@ -55,7 +55,7 @@ function App() {
           <FloatingHomeButton />
         </main>
         <Footer />
-      </motion.div>
+      </Motion.div>
     </Router>
   );
 }

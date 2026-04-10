@@ -6,7 +6,7 @@ import { navReveal } from '../utils/animations';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const navLinkClass = "relative cursor-pointer py-2 text-[20px] text-[#4F4D4D] after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:rounded-full after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full";
+  const navLinkClass = "relative cursor-pointer py-2 text-[18px] text-[#4F4D4D] after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-0 after:rounded-full after:bg-[#4F4D4D] after:transition-all after:duration-300 hover:after:w-full xl:text-[20px]";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -50,21 +50,21 @@ const Navbar = () => {
 
   return (
     <Motion.nav
-      className="fixed top-0 z-[100] h-[10vh] w-[100%] bg-[#F8F9FA]/90 p-0 px-[10%] backdrop-blur-md [font-family:'Lora',serif]"
+      className="fixed top-0 z-[100] h-[10vh] min-h-[72px] w-full bg-[#F8F9FA]/90 px-4 backdrop-blur-md [font-family:'Lora',serif] sm:px-6 md:px-10 lg:px-[8%] xl:px-[10%]"
       variants={navReveal}
       initial="hidden"
       animate="show"
     >
-      <div className="flex w-full items-center justify-between pt-[10px]">
+      <div className="flex h-full w-full items-center justify-between">
         <Motion.div
-          className={`[font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem]`}
+          className={`text-[34px] font-extrabold text-[#4F4D4D] transition-all duration-300 sm:text-[38px] lg:text-[42px]`}
           whileHover={{ scale: 1.03 }}
         >
           Portfolio
         </Motion.div>
 
         {/* ------------ Desktop Navigation ------------ */}
-        <div className="flex gap-10 max-lg:hidden">
+        <div className="hidden gap-8 lg:flex xl:gap-10">
 
           <Link
             to="about"
@@ -150,7 +150,7 @@ const Navbar = () => {
 
         {/* ------------ Mobile Hamburger Icon ------------ */}
         <Motion.div
-          className={`z-[1001] hidden h-[21px] w-[30px] cursor-pointer flex-col justify-between max-lg:flex ${isOpen ? 'open' : ''}`}
+          className={`z-[1001] flex h-[21px] w-[30px] cursor-pointer flex-col justify-between lg:hidden ${isOpen ? 'open' : ''}`}
           onClick={toggleMenu}
           whileTap={{ scale: 0.95 }}
         >
@@ -163,7 +163,7 @@ const Navbar = () => {
         <AnimatePresence>
           {isOpen && (
             <Motion.div
-              className="fixed left-0 top-0 z-[1000] flex h-[110vh] w-full flex-col items-center justify-center gap-10 bg-[#F8F9FA] lg:hidden"
+              className="fixed left-0 top-0 z-[1000] flex h-[100dvh] w-full flex-col items-center justify-center gap-7 bg-[#F8F9FA] px-6 lg:hidden"
               initial={{ y: '-100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: '-100%', opacity: 0 }}

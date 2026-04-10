@@ -93,9 +93,9 @@ const Projects = () => {
             : filteredProjects;
 
     return (
-        <section className="relative flex w-full flex-col pb-[20vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="projects">
+        <section className="relative flex w-full flex-col pb-[14vh] max-[600px]:pb-[12vh]" id="projects">
             <motion.h1
-                className="flex w-fit min-h-[10vh] items-start justify-between text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]"
+                className="section-heading mb-6 flex w-fit items-start justify-between sm:mb-8"
                 variants={headingReveal}
                 initial="hidden"
                 whileInView="show"
@@ -105,7 +105,7 @@ const Projects = () => {
             </motion.h1>
 
             <motion.div
-                className="mt-4 flex flex-wrap items-center gap-3"
+                className="mt-4 flex flex-wrap items-center gap-2.5 sm:gap-3"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="show"
@@ -117,7 +117,7 @@ const Projects = () => {
                         setActiveFilter('all');
                         setShowAllProjects(false);
                     }}
-                    className={`rounded-full border px-4 py-1.5 text-sm font-semibold ${activeFilter === 'all'
+                    className={`rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold sm:px-4 sm:text-sm ${activeFilter === 'all'
                         ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
@@ -132,7 +132,7 @@ const Projects = () => {
                         setActiveFilter('web');
                         setShowAllProjects(false);
                     }}
-                    className={`rounded-full border px-4 py-1.5 text-sm font-semibold ${activeFilter === 'web'
+                    className={`rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold sm:px-4 sm:text-sm ${activeFilter === 'web'
                         ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
@@ -147,7 +147,7 @@ const Projects = () => {
                         setActiveFilter('ai');
                         setShowAllProjects(false);
                     }}
-                    className={`rounded-full border px-4 py-1.5 text-sm font-semibold ${activeFilter === 'ai'
+                    className={`rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold sm:px-4 sm:text-sm ${activeFilter === 'ai'
                         ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
@@ -159,13 +159,13 @@ const Projects = () => {
             </motion.div>
 
             <motion.div
-                className="flex flex-col items-center justify-center gap-12 pt-[10vh] max-lg:gap-8 max-lg:pt-[8vh] max-md:pt-[6vh] max-[600px]:pt-[5vh] max-[480px]:gap-6 max-[480px]:pt-[4vh]"
+                className="flex flex-col items-center justify-center gap-8 pt-8 sm:gap-10 sm:pt-10"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="show"
                 viewport={viewportDefault}
             >
-                <div className="grid w-full grid-cols-3 gap-6 max-[1200px]:grid-cols-2 max-lg:grid-cols-1">
+                <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                     <AnimatePresence mode="sync">
                         {visibleProjects.map((project) => (
                             <motion.article
@@ -182,16 +182,16 @@ const Projects = () => {
                                 <motion.img
                                     src={project.image}
                                     alt={project.title}
-                                    className="h-[220px] w-full object-cover"
+                                    className="h-[200px] w-full object-cover sm:h-[220px]"
                                     whileHover={{ scale: 1.04 }}
                                     transition={{ duration: 0.5 }}
                                 />
 
-                                <div className="flex min-h-[250px] flex-col gap-4 p-5">
-                                    <h3 className="text-[1.35rem] font-semibold text-[#4F4D4D]">
+                                <div className="flex min-h-[245px] flex-col gap-4 p-4 sm:p-5">
+                                    <h3 className="text-[1.2rem] font-semibold text-[#4F4D4D] sm:text-[1.35rem]">
                                         {project.title}
                                     </h3>
-                                    <p className="grow text-[1rem] text-slate-700">
+                                    <p className="grow text-[0.96rem] text-slate-700 sm:text-[1rem]">
                                         {project.description}
                                     </p>
 
@@ -199,14 +199,14 @@ const Projects = () => {
                                         {project.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className="rounded-full bg-[#4F4D4D] px-3 py-1 text-[0.78rem] text-white"
+                                                className="rounded-full bg-[#4F4D4D] px-3 py-1 text-[0.74rem] text-white sm:text-[0.78rem]"
                                             >
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
 
-                                    <div className="flex gap-3 max-[480px]:flex-col">
+                                    <div className="flex flex-col gap-3 min-[440px]:flex-row">
                                         {project.demolink && (
                                             <motion.a
                                                 href={project.demolink}

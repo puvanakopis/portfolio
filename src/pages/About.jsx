@@ -11,9 +11,9 @@ import { headingReveal, imageFloatIn, itemFadeUp, staggerContainer, viewportDefa
 
 const About = () => {
   return (
-    <section className="flex w-full h-full  items-start justify-start flex-col pb-[20vh] min-[1024px]:min-h-[100vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="about">
+    <section className="flex h-full w-full flex-col items-start justify-start pb-[16vh] min-[1024px]:min-h-[85vh] max-[600px]:pb-[12vh]" id="about">
       <motion.h1
-        className=" flex w-fit min-h-[10vh] items-start justify-between font-extrabold text-[45px] text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]"
+        className="section-heading mb-6 flex w-fit items-start justify-between sm:mb-8"
         variants={headingReveal}
         initial="hidden"
         whileInView="show"
@@ -22,11 +22,11 @@ const About = () => {
         About Me
       </motion.h1>
 
-      <div className="mx-auto flex w-full h-full min-h-[90vh] items-center justify-between gap-12 max-lg:flex-col-reverse max-lg:gap-10">
+      <div className="mx-auto flex h-full w-full items-center justify-between gap-10 pt-2 min-[1024px]:min-h-[72vh] max-lg:flex-col-reverse max-lg:gap-8">
 
         {/* RIGHT CONTENT */}
         <motion.div
-          className="group relative flex w-[35%] justify-center max-lg:mb-8 max-lg:w-full"
+          className="group relative flex w-full justify-center min-[1024px]:w-[42%]"
           variants={imageFloatIn}
           initial="hidden"
           whileInView="show"
@@ -34,7 +34,7 @@ const About = () => {
         >
           <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-[#4F4D4D]/35 via-[#4F4D4D]/20 to-[#4F4D4D]/10 blur-3xl opacity-70 transition-all duration-700 group-hover:opacity-100 animate-[pulseSoft_3.2s_ease-in-out_infinite]"></div>
 
-          <div className="relative isolate w-full max-w-[380px] overflow-hidden rounded-2xl [clip-path:inset(0_round_1rem)] border-4 border-white/90 opacity-90 shadow-[0_22px_45px_-15px_rgba(15,23,42,0.35)] ring-1 ring-slate-100/70 transform-gpu transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-100 animate-[floatY_5s_ease-in-out_infinite]">
+          <div className="relative isolate w-full max-w-[320px] overflow-hidden rounded-2xl [clip-path:inset(0_round_1rem)] border-4 border-white/90 opacity-90 shadow-[0_22px_45px_-15px_rgba(15,23,42,0.35)] ring-1 ring-slate-100/70 transform-gpu transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-100 animate-[floatY_5s_ease-in-out_infinite] sm:max-w-[360px] md:max-w-[390px]">
             <img
               src={profileImage}
               alt="Puvankopis"
@@ -43,12 +43,12 @@ const About = () => {
 
             <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-t from-slate-900/25 via-transparent to-transparent"></div>
 
-            <div className="absolute left-4 top-4 rounded-full border border-white/60 bg-white/80 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-700 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-100">
+            <div className="absolute left-3 top-3 rounded-full border border-white/60 bg-white/80 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-slate-700 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-100 sm:left-4 sm:top-4 sm:px-3 sm:text-[11px]">
               Open for Opportunities
             </div>
 
             <motion.div
-              className="absolute bottom-4 right-4 flex items-center gap-3 rounded-xl border border-white/70 bg-white/90 p-3 shadow-lg backdrop-blur-md"
+              className="absolute bottom-3 right-3 flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 p-2 shadow-lg backdrop-blur-md sm:bottom-4 sm:right-4 sm:gap-3 sm:p-3"
               variants={itemFadeUp}
               initial="hidden"
               whileInView="show"
@@ -67,7 +67,7 @@ const About = () => {
 
         {/* LEFT CONTENT */}
         <motion.div
-          className="w-[55%] max-lg:w-full max-lg:text-center"
+          className="w-full min-[1024px]:w-[54%]"
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
@@ -82,7 +82,7 @@ const About = () => {
           </motion.p>
 
           {/* 2x2 INFO GRID */}
-          <motion.div className="grid grid-cols-2 gap-4 max-lg:grid-cols-1 max-lg:justify-items-center" variants={staggerContainer}>
+          <motion.div className="grid grid-cols-1 gap-4 sm:grid-cols-2" variants={staggerContainer}>
 
             {/* University */}
             <motion.div className="flex items-start gap-3 rounded-xl border border-[#c7c2b8] bg-white/80 px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md" variants={itemFadeUp} whileHover={{ y: -3 }}>

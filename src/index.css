@@ -2,8 +2,29 @@
 @import "tailwindcss";
 
 @layer base {
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
     body {
         @apply m-0 bg-[#F8F9FA];
+    }
+
+    section[id],
+    div[id] {
+        scroll-margin-top: 88px;
+    }
+}
+
+@layer components {
+    .section-heading {
+        color: #4F4D4D;
+        font-size: clamp(2rem, 4.8vw, 2.8125rem);
+        font-weight: 800;
+        line-height: 1.1;
     }
 }
 

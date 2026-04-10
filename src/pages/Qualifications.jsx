@@ -35,22 +35,22 @@ const Qualifications = () => {
 
   return (
     <motion.section
-      className="w-full pb-[16vh] min-[1024px]:min-h-[90vh]"
+      className="w-full pb-[14vh] min-[1024px]:min-h-[78vh]"
       id="qualifications"
       variants={sectionReveal}
       initial="hidden"
       whileInView="show"
       viewport={viewportDefault}
     >
-      <motion.div className="z-[999] flex w-fit items-start justify-start pb-[9vh] font-extrabold text-[45px] text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem]" variants={headingReveal}>
+      <motion.h1 className="section-heading z-[1] mb-8 flex w-fit items-start justify-start sm:mb-10" variants={headingReveal}>
         Qualifications
-      </motion.div>
+      </motion.h1>
 
-      <div className="mx-auto max-w-[1000px] gap-12 px-2 md:px-4">
+      <div className="mx-auto max-w-[1000px] px-1 sm:px-2 md:px-4">
 
         {/* Tabs */}
         <motion.div
-          className="mb-10 flex justify-center gap-4 max-[769px]:flex-col max-[769px]:items-center"
+          className="mb-8 flex justify-center gap-3 sm:mb-10 sm:gap-4 max-[769px]:flex-col max-[769px]:items-center"
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
@@ -58,9 +58,9 @@ const Qualifications = () => {
         >
           <motion.button
             type="button"
-            className={`group flex cursor-pointer items-center rounded-xl border border-[#4F4D4D]/50 px-6 py-[0.85rem] shadow-[0_10px_25px_-18px_rgba(15,23,42,0.55)] backdrop-blur-sm transition-all duration-300 max-[769px]:w-[85%] max-[769px]:justify-center ${activeTab === 'education'
-                ? 'bg-[#4F4D4D] text-[#F8F9FA] ring-1 ring-[#4F4D4D]/30'
-                : 'bg-white/85 text-[#4F4D4D] hover:-translate-y-0.5 hover:bg-[#4F4D4D] hover:text-[#F8F9FA]'
+            className={`group flex cursor-pointer items-center rounded-xl border border-[#4F4D4D]/50 px-5 py-[0.8rem] text-[0.95rem] shadow-[0_10px_25px_-18px_rgba(15,23,42,0.55)] backdrop-blur-sm transition-all duration-300 max-[769px]:w-full max-[769px]:max-w-[360px] max-[769px]:justify-center ${activeTab === 'education'
+              ? 'bg-[#4F4D4D] text-[#F8F9FA] ring-1 ring-[#4F4D4D]/30'
+              : 'bg-white/85 text-[#4F4D4D] hover:-translate-y-0.5 hover:bg-[#4F4D4D] hover:text-[#F8F9FA]'
               }`}
             onClick={() => setActiveTab('education')}
             variants={itemFadeUp}
@@ -73,9 +73,9 @@ const Qualifications = () => {
 
           <motion.button
             type="button"
-            className={`group flex cursor-pointer items-center rounded-xl border border-[#4F4D4D]/50 px-6 py-[0.85rem] shadow-[0_10px_25px_-18px_rgba(15,23,42,0.55)] backdrop-blur-sm transition-all duration-300 max-[769px]:w-[85%] max-[769px]:justify-center ${activeTab === 'experience'
-                ? 'bg-[#4F4D4D] text-[#F8F9FA] ring-1 ring-[#4F4D4D]/30'
-                : 'bg-white/85 text-[#4F4D4D] hover:-translate-y-0.5 hover:bg-[#4F4D4D] hover:text-[#F8F9FA]'
+            className={`group flex cursor-pointer items-center rounded-xl border border-[#4F4D4D]/50 px-5 py-[0.8rem] text-[0.95rem] shadow-[0_10px_25px_-18px_rgba(15,23,42,0.55)] backdrop-blur-sm transition-all duration-300 max-[769px]:w-full max-[769px]:max-w-[360px] max-[769px]:justify-center ${activeTab === 'experience'
+              ? 'bg-[#4F4D4D] text-[#F8F9FA] ring-1 ring-[#4F4D4D]/30'
+              : 'bg-white/85 text-[#4F4D4D] hover:-translate-y-0.5 hover:bg-[#4F4D4D] hover:text-[#F8F9FA]'
               }`}
             onClick={() => setActiveTab('experience')}
             variants={itemFadeUp}
@@ -90,7 +90,7 @@ const Qualifications = () => {
         {/* Content */}
         <div>
           <motion.div
-            className="relative py-8 before:absolute before:top-0 before:bottom-0 before:left-1/2 before:w-[2px] before:-translate-x-1/2 before:bg-gradient-to-b before:from-[#4F4D4D]/20 before:via-[#4F4D4D]/65 before:to-[#4F4D4D]/20 max-[769px]:py-0 max-[769px]:before:hidden"
+            className="relative py-4 sm:py-8 before:absolute before:bottom-0 before:top-0 before:left-1/2 before:w-[2px] before:-translate-x-1/2 before:bg-gradient-to-b before:from-[#4F4D4D]/20 before:via-[#4F4D4D]/65 before:to-[#4F4D4D]/20 max-[769px]:py-0 max-[769px]:before:hidden"
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
@@ -104,9 +104,9 @@ const Qualifications = () => {
                   className="relative mb-8 w-full before:absolute before:top-6 before:z-[1] before:h-4 before:w-4 before:rounded-full before:border-2 before:border-white/70 before:bg-[#4F4D4D] before:shadow before:left-1/2 before:-translate-x-2 max-[769px]:before:hidden"
                 >
                   <motion.div
-                    className={`group relative w-[45%] rounded-xl border border-[#c7c2b8] bg-white/80 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md animate-[heroRise_0.75s_ease-out] [animation-fill-mode:both] max-[769px]:ml-8 max-[769px]:w-[calc(100%-3rem)] max-[769px]:text-left ${item.side === 'left'
-                        ? 'ml-[-1.5rem] mr-auto text-left'
-                        : 'ml-auto mr-[-1.5rem] text-right'
+                    className={`group relative w-[45%] rounded-xl border border-[#c7c2b8] bg-white/80 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md animate-[heroRise_0.75s_ease-out] [animation-fill-mode:both] max-[769px]:ml-0 max-[769px]:w-full max-[769px]:text-left ${item.side === 'left'
+                      ? 'ml-[-1.5rem] mr-auto text-left'
+                      : 'ml-auto mr-[-1.5rem] text-right'
                       }`}
                     variants={itemFadeUp}
                     whileHover={{ y: -4 }}
@@ -119,8 +119,8 @@ const Qualifications = () => {
                     </p>
                     <div
                       className={`flex items-center gap-2 text-sm text-slate-700 ${item.side === 'right'
-                          ? 'justify-end max-[769px]:justify-start'
-                          : 'justify-start'
+                        ? 'justify-end max-[769px]:justify-start'
+                        : 'justify-start'
                         }`}
                     >
                       <FaCalendarAlt className="text-[#4F4D4D]" />
@@ -135,9 +135,9 @@ const Qualifications = () => {
                   className="relative mb-8 w-full before:absolute before:top-6 before:z-[1] before:h-4 before:w-4 before:rounded-full before:border-2 before:border-white/70 before:bg-[#4F4D4D] before:shadow before:left-1/2 before:-translate-x-2 max-[769px]:before:hidden"
                 >
                   <motion.div
-                    className={`group relative w-[45%] rounded-xl border border-[#c7c2b8] bg-white/80 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md animate-[heroRise_0.75s_ease-out] [animation-fill-mode:both] max-[769px]:ml-8 max-[769px]:w-[calc(100%-3rem)] max-[769px]:text-left ${item.side === 'left'
-                        ? 'ml-[-1.5rem] mr-auto text-left'
-                        : 'ml-auto mr-[-1.5rem] text-right'
+                    className={`group relative w-[45%] rounded-xl border border-[#c7c2b8] bg-white/80 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md animate-[heroRise_0.75s_ease-out] [animation-fill-mode:both] max-[769px]:ml-0 max-[769px]:w-full max-[769px]:text-left ${item.side === 'left'
+                      ? 'ml-[-1.5rem] mr-auto text-left'
+                      : 'ml-auto mr-[-1.5rem] text-right'
                       }`}
                     variants={itemFadeUp}
                     whileHover={{ y: -4 }}
@@ -150,8 +150,8 @@ const Qualifications = () => {
                     </p>
                     <div
                       className={`flex items-center gap-2 text-sm text-slate-700 ${item.side === 'right'
-                          ? 'justify-end max-[769px]:justify-start'
-                          : 'justify-start'
+                        ? 'justify-end max-[769px]:justify-start'
+                        : 'justify-start'
                         }`}
                     >
                       <FaCalendarAlt className="text-[#4F4D4D]" />

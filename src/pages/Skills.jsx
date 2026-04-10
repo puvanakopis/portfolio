@@ -38,7 +38,7 @@ const Skills = () => {
   return (
     <section className="relative flex w-full flex-col pb-[20vh] min-[1024px]:min-h-[85vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="skills">
       <motion.h1
-        className="flex w-fit min-h-[10vh] items-start justify-between text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]"
+        className="section-heading mb-6 flex w-fit items-start justify-between sm:mb-8"
         variants={headingReveal}
         initial="hidden"
         whileInView="show"
