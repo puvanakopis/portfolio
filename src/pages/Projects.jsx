@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.png';
@@ -6,21 +6,25 @@ import project3 from '../assets/project3.png';
 import project4 from '../assets/project4.png';
 
 const Projects = () => {
+    const [activeFilter, setActiveFilter] = useState('all');
+    const [showAllProjects, setShowAllProjects] = useState(false);
+
     const projects = [
         {
             id: 1,
             title: 'Yummi',
-            description: 'A modern, responsive restaurant website showcasing delicious menus, offers, and reviews',
+            description: 'A modern, responsive restaurant website showcasing menus, offers, and customer reviews.',
             image: project1,
+            category: 'web',
             tags: ['React', 'CSS3'],
-            demolink: '#',
             gitlink: 'https://github.com/puvanakopis/Yummi'
         },
         {
             id: 2,
             title: 'Foodi',
-            description: ' sleek restaurant website featuring curated menus, seasonal specials, and diner testimonials.',
+            description: 'A sleek restaurant website with curated menus, seasonal specials, and diner testimonials.',
             image: project2,
+            category: 'web',
             tags: ['HTML/CSS', 'JavaScript', 'Responsive Design'],
             demolink: 'https://foodi-860506298.development.catalystserverless.com/app/index.html',
             gitlink: 'https://github.com/puvanakopis/Foodi'
@@ -28,206 +32,184 @@ const Projects = () => {
         {
             id: 3,
             title: 'Edusity',
-            description: 'Explore website for programs, resources, and campus updates—all in one place..',
+            description: 'An education site to explore programs, resources, and campus updates in one place.',
             image: project3,
+            category: 'web',
             tags: ['React', 'CSS3'],
-            demolink: '#',
             gitlink: 'https://github.com/puvanakopis/Edusity'
-        },
-        {
+        }
+        , {
             id: 4,
             title: 'CampusEase',
-            description: 'CampusEase connects students and lecturers in Sri Lanka with trusted housing and transport.',
+            description: 'A platform that helps students and lecturers in Sri Lanka find housing and transport.',
             image: project4,
-            tags: ['React', 'node js'],
-            demolink: '#',
-            gitlink: 'https://github.com/puvanakopis/Edusity'
-        },
-
+            category: 'ai',
+            tags: ['React', 'Node.js', 'AI'],
+            gitlink: 'https://github.com/puvanakopis/CampusEase'
+        }
+        , {
+            id: 5,
+            title: 'CampusEase',
+            description: 'A platform that helps students and lecturers in Sri Lanka find housing and transport.',
+            image: project4,
+            category: 'ai',
+            tags: ['React', 'Node.js', 'AI'],
+            gitlink: 'https://github.com/puvanakopis/CampusEase'
+        }
+        , {
+            id: 6,
+            title: 'CampusEase',
+            description: 'A platform that helps students and lecturers in Sri Lanka find housing and transport.',
+            image: project4,
+            category: 'ai',
+            tags: ['React', 'Node.js', 'AI'],
+            gitlink: 'https://github.com/puvanakopis/CampusEase'
+        }
+        , {
+            id: 7,
+            title: 'CampusEase',
+            description: 'A platform that helps students and lecturers in Sri Lanka find housing and transport.',
+            image: project4,
+            category: 'ai',
+            tags: ['React', 'Node.js', 'AI'],
+            gitlink: 'https://github.com/puvanakopis/CampusEase'
+        }
     ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
-    const [cardsToShow, setCardsToShow] = useState(2);
-    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const filteredProjects =
+        activeFilter === 'all'
+            ? projects
+            : projects.filter((project) => project.category === activeFilter);
 
-    // Handle window resize
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 768) {
-                setCardsToShow(1);
-            } else if (window.innerWidth < 1200) {
-                setCardsToShow(1);
-            } else {
-                setCardsToShow(2);
-            }
-        };
+    const allProjectsCount = projects.length;
+    const webProjectsCount = projects.filter((project) => project.category === 'web').length;
+    const aiProjectsCount = projects.filter((project) => project.category === 'ai').length;
 
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // Auto slide change with pause on hover
-    useEffect(() => {
-        let interval;
-        // maxIndex is the highest start index that still shows full cardsToShow cards
-        const maxIndex = projects.length - cardsToShow;
-
-        const startInterval = () => {
-            if (isAutoPlaying) {
-                interval = setInterval(() => {
-                    setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-                }, 4000);
-            }
-        };
-
-        startInterval();
-
-        return () => {
-            if (interval) clearInterval(interval);
-        };
-    }, [projects.length, cardsToShow, isAutoPlaying]);
-
-    // Move to next slide
-    const nextSlide = () => {
-        const maxIndex = projects.length - cardsToShow;
-        setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-    };
-
-    // Move to previous slide
-    const prevSlide = () => {
-        const maxIndex = projects.length - cardsToShow;
-        setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
-    };
-
-    // Pause auto-play when user interacts
-    const pauseAutoPlay = () => setIsAutoPlaying(false);
-    const resumeAutoPlay = () => setIsAutoPlaying(true);
-
-    // Touch event handlers for mobile swipe support
-    const handleTouchStart = (e) => {
-        setTouchStart(e.targetTouches[0].clientX);
-        pauseAutoPlay();
-    };
-
-    const handleTouchMove = (e) => {
-        setTouchEnd(e.targetTouches[0].clientX);
-    };
-
-    const handleTouchEnd = () => {
-        if (touchStart - touchEnd > 100) {
-            nextSlide();
-        }
-
-        if (touchStart - touchEnd < -100) {
-            prevSlide();
-        }
-        resumeAutoPlay();
-    };
-
-    const dotsCount = projects.length - cardsToShow + 1;
+    const visibleProjects =
+        filteredProjects.length > 6 && !showAllProjects
+            ? filteredProjects.slice(0, 6)
+            : filteredProjects;
 
     return (
-        <div className="flex h-fit w-full flex-col pb-[20vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="projects">
-            <div className="flex w-fit items-start justify-start pb-[10vh] font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
+        <section className="relative flex w-full flex-col pb-[20vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="projects">
+            <h1 className="flex w-fit min-h-[10vh] items-start justify-between text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:pb-[4vh] max-lg:text-[3rem] max-[480px]:text-[2rem]">
                 My Projects
+            </h1>
+
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+                <button
+                    type="button"
+                    onClick={() => {
+                        setActiveFilter('all');
+                        setShowAllProjects(false);
+                    }}
+                    className={`rounded-full border px-4 py-1.5 text-sm font-semibold ${activeFilter === 'all'
+                        ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
+                        : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
+                        }`}
+                >
+                    All ({allProjectsCount})
+                </button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setActiveFilter('web');
+                        setShowAllProjects(false);
+                    }}
+                    className={`rounded-full border px-4 py-1.5 text-sm font-semibold ${activeFilter === 'web'
+                        ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
+                        : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
+                        }`}
+                >
+                    Web ({webProjectsCount})
+                </button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setActiveFilter('ai');
+                        setShowAllProjects(false);
+                    }}
+                    className={`rounded-full border px-4 py-1.5 text-sm font-semibold ${activeFilter === 'ai'
+                        ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
+                        : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
+                        }`}
+                >
+                    AI Project ({aiProjectsCount})
+                </button>
             </div>
 
-            <div className="relative box-border flex flex-col items-center justify-center gap-12 overflow-hidden pt-[10vh] max-lg:gap-8 max-lg:pt-[8vh] max-md:pt-[6vh] max-[600px]:pt-[5vh] max-[480px]:gap-6 max-[480px]:pt-[4vh]">
+            <div className="flex flex-col items-center justify-center gap-12 pt-[10vh] max-lg:gap-8 max-lg:pt-[8vh] max-md:pt-[6vh] max-[600px]:pt-[5vh] max-[480px]:gap-6 max-[480px]:pt-[4vh]">
+                <div className="grid w-full grid-cols-3 gap-6 max-[1200px]:grid-cols-2 max-lg:grid-cols-1">
+                    {visibleProjects.map((project) => (
+                        <article
+                            key={project.id}
+                            className="overflow-hidden rounded-xl border border-[#c7c2b8] bg-white/80"
+                        >
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                className="h-[220px] w-full object-cover"
+                            />
 
-                <div className="relative mx-auto flex w-full items-center justify-center p-0">
-                    {/* --------------- Arrow button --------------- */}
-                    <button
-                        className="absolute left-[10px] top-1/2 z-[1] -translate-y-1/2 bg-none p-[10px] text-[2.5rem] text-[#4F4D4D] transition-all duration-300 hover:-translate-y-1/2 hover:scale-[1.2] max-lg:text-[2rem] max-md:text-[1.8rem] max-[480px]:p-[5px] max-[480px]:text-[1.6rem] max-[400px]:text-[1.4rem]"
-                        onClick={() => {
-                            prevSlide();
-                            pauseAutoPlay();
-                        }}
-                        aria-label="Previous slide"
-                    >
-                        &#10094;
-                    </button>
+                            <div className="flex min-h-[250px] flex-col gap-4 p-5">
+                                <h3 className="text-[1.35rem] font-semibold text-[#4F4D4D]">
+                                    {project.title}
+                                </h3>
+                                <p className="grow text-[1rem] text-slate-700">
+                                    {project.description}
+                                </p>
 
-                    {/* --------------- Projects container --------------- */}
-                    <div
-                        className="flex w-[calc(100%-100px)] justify-center gap-[30px] overflow-hidden py-[10px] [scroll-behavior:smooth] max-lg:w-[calc(100%-80px)] max-lg:gap-5 max-md:w-[calc(100%-70px)] max-md:gap-[15px] max-[600px]:w-[calc(100%-60px)] max-[480px]:w-[calc(100%-50px)] max-[480px]:gap-[10px] max-[480px]:py-[5px] max-[400px]:w-[calc(100%-40px)]"
-                        onTouchStart={handleTouchStart}
-                        onTouchMove={handleTouchMove}
-                        onTouchEnd={handleTouchEnd}
-                        onMouseEnter={pauseAutoPlay}
-                        onMouseLeave={resumeAutoPlay}
-                    >
-                        {projects.slice(currentIndex, currentIndex + cardsToShow).map((project) => (
-                            <div className="h-auto min-h-[420px] w-full min-w-[280px] max-w-[400px] overflow-hidden rounded-[20px] border-[3px] border-[#4F4D4D] bg-[#F8F9FA] shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:-translate-y-[5px] max-lg:min-h-[380px] max-md:min-h-[360px] max-md:min-w-[250px] max-[600px]:min-h-[340px] max-[600px]:max-w-[25rem] max-[480px]:min-h-[320px] max-[480px]:min-w-[200px] max-[480px]:max-w-[15rem] max-[480px]:border-2" key={project.id}>
-                                <div>
-                                    <img src={project.image} alt={project.title} className="h-[220px] w-full object-cover" />
+                                <div className="flex flex-wrap gap-2">
+                                    {project.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="rounded-full bg-[#4F4D4D] px-3 py-1 text-[0.78rem] text-white"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
-                                <div className="box-border flex h-[calc(100%-220px)] flex-col p-5">
-                                    <h3 className="m-0 text-[1.5rem] text-[#4F4D4D] max-lg:text-[1.4rem] max-md:text-[1.3rem] max-[600px]:text-[1.2rem] max-[480px]:text-[1.1rem] max-[400px]:text-[1rem]">{project.title}</h3>
-                                    <p className="grow text-[1rem] text-[#4F4D4D] max-md:text-[0.95rem] max-[480px]:text-[0.9rem] max-[400px]:text-[0.85rem]">{project.description}</p>
-                                    <div className="mb-6 flex flex-wrap gap-2">
-                                        {project.tags.map((tag, index) => (
-                                            <span key={index} className="rounded-[20px] bg-[#4F4D4D] px-[0.8rem] py-[0.3rem] text-[0.8rem] text-white max-[480px]:px-[0.6rem] max-[480px]:py-[0.2rem] max-[480px]:text-[0.7rem]">{tag}</span>
-                                        ))}
-                                    </div>
-                                    <div className="flex justify-between gap-[10px]">
+
+                                <div className="flex gap-3 max-[480px]:flex-col">
+                                    {project.demolink && (
                                         <a
                                             href={project.demolink}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex flex-1 items-center justify-center rounded-[5px] border border-[#4F4D4D] bg-white px-4 py-2 text-[0.9rem] text-[#4F4D4D] no-underline transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] max-[480px]:px-[0.8rem] max-[480px]:py-[0.4rem] max-[480px]:text-[0.8rem]"
-                                            aria-label={`View ${project.title} project`}
+                                            className="flex flex-1 items-center justify-center rounded-md border border-[#4F4D4D] bg-white px-4 py-2 text-[0.92rem] font-medium text-[#4F4D4D] no-underline"
+                                            aria-label={`View ${project.title} demo`}
                                         >
                                             <FaExternalLinkAlt style={{ marginRight: '6px' }} />
                                             Demo
                                         </a>
-                                        <a
-                                            href={project.gitlink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-1 items-center justify-center rounded-[5px] border border-[#4F4D4D] bg-[#4F4D4D] px-4 py-2 text-[0.9rem] text-white no-underline transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] max-[480px]:px-[0.8rem] max-[480px]:py-[0.4rem] max-[480px]:text-[0.8rem]"
-                                            aria-label={`View ${project.title} project details`}
-                                        >
-                                            <FaGithub style={{ marginRight: '6px' }} />
-                                            GitHub
-                                        </a>
-                                    </div>
+                                    )}
+                                    <a
+                                        href={project.gitlink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex flex-1 items-center justify-center rounded-md border border-[#4F4D4D] bg-[#4F4D4D] px-4 py-2 text-[0.92rem] font-medium text-white no-underline"
+                                        aria-label={`View ${project.title} on GitHub`}
+                                    >
+                                        <FaGithub style={{ marginRight: '6px' }} />
+                                        GitHub
+                                    </a>
                                 </div>
                             </div>
-                        ))}
-                    </div>
-
-                    {/* --------------- Arrow button --------------- */}
-                    <button
-                        className="absolute right-[10px] top-1/2 z-[1] -translate-y-1/2 bg-none p-[10px] text-[2.5rem] text-[#4F4D4D] transition-all duration-300 hover:-translate-y-1/2 hover:scale-[1.2] max-lg:text-[2rem] max-md:text-[1.8rem] max-[480px]:p-[5px] max-[480px]:text-[1.6rem] max-[400px]:text-[1.4rem]"
-                        onClick={() => {
-                            nextSlide();
-                            pauseAutoPlay();
-                        }}
-                        aria-label="Next slide"
-                    >
-                        &#10095;
-                    </button>
-                </div>
-
-                {/* --------------- Dot indicators --------------- */}
-                <div className="mt-[30px] flex flex-wrap justify-center max-[600px]:mt-[25px] max-[480px]:mt-5">
-                    {Array.from({ length: dotsCount }).map((_, index) => (
-                        <span
-                            key={index}
-                            className={`mx-[5px] inline-block h-3 w-3 cursor-pointer rounded-full transition-all duration-300 max-[480px]:h-[10px] max-[480px]:w-[10px] ${index === currentIndex ? 'bg-[#4F4D4D]' : 'bg-[#bbb]'}`}
-                            onClick={() => {
-                                setCurrentIndex(index);
-                                pauseAutoPlay();
-                            }}
-                            aria-label={`Go to slide ${index + 1}`}
-                        ></span>
+                        </article>
                     ))}
                 </div>
+
+                {filteredProjects.length > 6 && !showAllProjects && (
+                    <button
+                        type="button"
+                        onClick={() => setShowAllProjects(true)}
+                        className="rounded-md border border-[#4F4D4D] bg-[#4F4D4D] px-5 py-2 text-sm font-semibold text-white"
+                    >
+                        Show All Projects
+                    </button>
+                )}
             </div>
-        </div>
+        </section>
     );
 };
 

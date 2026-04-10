@@ -48,16 +48,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeSection]);
 
-  // Format the section name for display
-  const formatSectionName = (section) => {
-    if (section === 'home') return 'Portfolio';
-    else if (section === 'about') return 'About Me';
-    else if (section === 'skills') return 'My Skills';
-    else if (section === 'qualifications') return 'Qualifications';
-    else if (section === 'projects') return 'My Projects';
-    else if (section === 'contact') return 'Contact Me';
-    return section.charAt(0).toUpperCase() + section.slice(1);
-  };
 
   return (
     <nav className="fixed top-0 z-[100] h-[10vh] w-[100%] bg-[#F8F9FA] p-0 px-[10%] [font-family:'Lora',serif]">
@@ -65,7 +55,7 @@ const Navbar = () => {
         <div
           className={`[font-extrabold text-[45px] font-extrabold text-[#4F4D4D] transition-all duration-300 max-lg:text-[3rem] max-[480px]:text-[2rem] ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
         >
-          {formatSectionName(activeSection)}
+          Portfolio
         </div>
 
         {/* ------------ Desktop Navigation ------------ */}
