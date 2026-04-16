@@ -7,20 +7,12 @@ import {
 } from 'react-icons/fa';
 import { MdOutlineSmartToy } from 'react-icons/md';
 import { motion } from 'framer-motion';
-import { headingReveal, imageFloatIn, itemFadeUp, staggerContainer, viewportDefault } from '../utils/animations';
+import SectionHeading from '../components/SectionHeading';
+import { imageFloatIn, itemFadeUp, staggerContainer, viewportDefault } from '../utils/animations';
 
 const About = () => {
   return (
     <section className="flex h-full w-full flex-col items-start justify-start pb-[16vh] min-[1024px]:min-h-[85vh] max-[600px]:pb-[12vh]" id="about">
-      <motion.h1
-        className="section-heading mb-6 flex w-fit items-start justify-between sm:mb-8"
-        variants={headingReveal}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewportDefault}
-      >
-        About Me
-      </motion.h1>
 
       <div className="mx-auto flex h-full w-full items-center justify-between gap-10 pt-2 min-[1024px]:min-h-[72vh] max-lg:flex-col-reverse max-lg:gap-8">
 
@@ -73,6 +65,13 @@ const About = () => {
           whileInView="show"
           viewport={viewportDefault}
         >
+          <SectionHeading
+            title="About Me"
+            subtitle="Passionate software engineer focused on building reliable web products and practical AI-driven solutions."
+            kicker="Profile"
+            className="mb-4"
+          />
+
           <motion.p className="mb-6 text-base leading-[1.75] text-slate-700 md:text-lg" variants={itemFadeUp}>
             I am a passionate developer skilled in web development, data analysis, and AI/machine learning. I completed my studies at BT/PD/Kaluthavalai Maha Vidyalayam and currently study at Sabaragamuwa University of Sri Lanka.
           </motion.p>

@@ -5,7 +5,8 @@ import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.png';
 import project3 from '../assets/project3.png';
 import project4 from '../assets/project4.png';
-import { headingReveal, itemFadeUp, staggerContainer, viewportDefault } from '../utils/animations';
+import SectionHeading from '../components/SectionHeading';
+import { itemFadeUp, staggerContainer, viewportDefault } from '../utils/animations';
 
 const Projects = () => {
     const [activeFilter, setActiveFilter] = useState('all');
@@ -94,15 +95,10 @@ const Projects = () => {
 
     return (
         <section className="relative flex w-full flex-col pb-[14vh] max-[600px]:pb-[12vh]" id="projects">
-            <motion.h1
-                className="section-heading mb-6 flex w-fit items-start justify-between sm:mb-8"
-                variants={headingReveal}
-                initial="hidden"
-                whileInView="show"
-                viewport={viewportDefault}
-            >
-                My Projects
-            </motion.h1>
+            <SectionHeading
+                title="My Projects"
+                kicker="Portfolio"
+            />
 
             <motion.div
                 className="mt-4 flex flex-wrap items-center gap-2.5 sm:gap-3"

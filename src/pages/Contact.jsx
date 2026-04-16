@@ -2,7 +2,8 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaCheckCircle, FaExclamationCircle
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion } from 'framer-motion';
-import { headingReveal, itemFadeUp, staggerContainer, viewportDefault } from '../utils/animations';
+import SectionHeading from '../components/SectionHeading';
+import { itemFadeUp, staggerContainer, viewportDefault } from '../utils/animations';
 
 const Contact = () => {
   const form = useRef();
@@ -76,15 +77,10 @@ const Contact = () => {
         )}
       </AnimatePresence>
 
-      <motion.h1
-        className="section-heading mb-6 flex w-fit items-start justify-between sm:mb-8"
-        variants={headingReveal}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewportDefault}
-      >
-        Contact Me
-      </motion.h1>
+      <SectionHeading
+        title="Contact Me"
+        kicker="Let’s Talk"
+      />
 
       <motion.div
         className="grid w-full grid-cols-1 gap-4 pt-4 sm:pt-6 lg:grid-cols-2 lg:gap-6"
