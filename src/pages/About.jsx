@@ -12,7 +12,7 @@ import { imageFloatIn, itemFadeUp, staggerContainer, viewportDefault } from '../
 
 const About = () => {
   return (
-    <section className="flex h-full w-full flex-col items-start justify-start pb-[16vh] min-[1024px]:min-h-[85vh] max-[600px]:pb-[12vh]" id="about">
+    <section className="flex pt-[15vh] h-full w-full flex-col items-start justify-start pb-[16vh] min-[1024px]:min-h-[85vh] max-[600px]:pb-[12vh]" id="about">
 
       <div className="mx-auto flex h-full w-full items-center justify-between gap-10 pt-2 min-[1024px]:min-h-[72vh] max-lg:flex-col-reverse max-lg:gap-8">
 

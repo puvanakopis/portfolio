@@ -52,7 +52,7 @@ const Contact = () => {
   const buttonClassName = 'inline-flex w-fit cursor-pointer items-center justify-center rounded-lg border border-[#4F4D4D] bg-[#4F4D4D] px-6 py-3 text-[1rem] font-medium text-[#F8F9FA] transition-all duration-300 hover:bg-transparent hover:text-[#4F4D4D] max-md:w-full';
 
   return (
-    <section className="relative flex w-full flex-col pb-[12vh] min-[1024px]:min-h-[72vh]" id="contact">
+    <section className="pt-[15vh] relative flex w-full flex-col pb-[12vh] min-[1024px]:min-h-[72vh]" id="contact">
       {/* Notification Overlay */}
       <AnimatePresence>
         {notification.show && (
@@ -80,6 +80,7 @@ const Contact = () => {
       <SectionHeading
         title="Contact Me"
         kicker="Let’s Talk"
+        className="mx-auto items-center text-center"
       />
 
       <motion.div

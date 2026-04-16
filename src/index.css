@@ -15,7 +15,7 @@
 
     section[id],
     div[id] {
-        scroll-margin-top: 88px;
+        scroll-margin-top: max(10vh, 72px);
     }
 }
 

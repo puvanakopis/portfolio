@@ -94,14 +94,15 @@ const Projects = () => {
             : filteredProjects;
 
     return (
-        <section className="relative flex w-full flex-col pb-[14vh] max-[600px]:pb-[12vh]" id="projects">
+        <section className="pt-[15vh] relative flex w-full flex-col pb-[14vh] max-[600px]:pb-[12vh]" id="projects">
             <SectionHeading
                 title="My Projects"
                 kicker="Portfolio"
+                className="mx-auto items-center text-center"
             />
 
             <motion.div
-                className="mt-4 flex flex-wrap items-center gap-2.5 sm:gap-3"
+                className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="show"
@@ -113,14 +114,21 @@ const Projects = () => {
                         setActiveFilter('all');
                         setShowAllProjects(false);
                     }}
-                    className={`rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold sm:px-4 sm:text-sm ${activeFilter === 'all'
-                        ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
+                    className={`relative rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold transition-colors duration-300 sm:px-4 sm:text-sm ${activeFilter === 'all'
+                        ? 'border-transparent text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
                     variants={itemFadeUp}
                     whileHover={{ y: -2 }}
                 >
-                    All ({allProjectsCount})
+                    {activeFilter === 'all' && (
+                        <motion.div
+                            layoutId="activeFilter"
+                            className="absolute inset-0 z-0 rounded-full bg-[#4F4D4D]"
+                            transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                        />
+                    )}
+                    <span className="relative z-10">All ({allProjectsCount})</span>
                 </motion.button>
                 <motion.button
                     type="button"
@@ -128,14 +136,21 @@ const Projects = () => {
                         setActiveFilter('web');
                         setShowAllProjects(false);
                     }}
-                    className={`rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold sm:px-4 sm:text-sm ${activeFilter === 'web'
-                        ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
+                    className={`relative rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold transition-colors duration-300 sm:px-4 sm:text-sm ${activeFilter === 'web'
+                        ? 'border-transparent text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
                     variants={itemFadeUp}
                     whileHover={{ y: -2 }}
                 >
-                    Web ({webProjectsCount})
+                    {activeFilter === 'web' && (
+                        <motion.div
+                            layoutId="activeFilter"
+                            className="absolute inset-0 z-0 rounded-full bg-[#4F4D4D]"
+                            transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                        />
+                    )}
+                    <span className="relative z-10">Web ({webProjectsCount})</span>
                 </motion.button>
                 <motion.button
                     type="button"
@@ -143,37 +158,49 @@ const Projects = () => {
                         setActiveFilter('ai');
                         setShowAllProjects(false);
                     }}
-                    className={`rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold sm:px-4 sm:text-sm ${activeFilter === 'ai'
-                        ? 'border-[#4F4D4D] bg-[#4F4D4D] text-white'
+                    className={`relative rounded-full border px-3.5 py-1.5 text-[0.82rem] font-semibold transition-colors duration-300 sm:px-4 sm:text-sm ${activeFilter === 'ai'
+                        ? 'border-transparent text-white'
                         : 'border-[#c7c2b8] bg-white text-[#4F4D4D]'
                         }`}
                     variants={itemFadeUp}
                     whileHover={{ y: -2 }}
                 >
-                    AI Project ({aiProjectsCount})
+                    {activeFilter === 'ai' && (
+                        <motion.div
+                            layoutId="activeFilter"
+                            className="absolute inset-0 z-0 rounded-full bg-[#4F4D4D]"
+                            transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                        />
+                    )}
+                    <span className="relative z-10">AI Project ({aiProjectsCount})</span>
                 </motion.button>
             </motion.div>
 
             <motion.div
+                key={activeFilter}
                 className="flex flex-col items-center justify-center gap-8 pt-8 sm:gap-10 sm:pt-10"
                 variants={staggerContainer}
                 initial="hidden"
-                whileInView="show"
-                viewport={viewportDefault}
+                animate="show"
             >
                 <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-                    <AnimatePresence mode="sync">
+                    <AnimatePresence mode="popLayout">
                         {visibleProjects.map((project) => (
                             <motion.article
-                                key={project.id}
+                                key={`${activeFilter}-${project.id}`}
                                 className="overflow-hidden rounded-xl border border-[#c7c2b8] bg-white/80"
                                 layout
-                                variants={itemFadeUp}
-                                initial={{ opacity: 0, y: 26, scale: 0.96 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: 24, scale: 0.98 }}
-                                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                                whileHover={{ y: -5 }}
+                                variants={{
+                                    hidden: { opacity: 0, scale: 0.9, y: 20 },
+                                    show: { opacity: 1, scale: 1, y: 0 },
+                                    exit: { opacity: 0, scale: 0.9, y: 20 }
+                                }}
+                                transition={{
+                                    duration: 0.4,
+                                    ease: [0.22, 1, 0.36, 1],
+                                    layout: { duration: 0.4 }
+                                }}
+                                whileHover={{ y: -8, transition: { duration: 0.2 } }}
                             >
                                 <motion.img
                                     src={project.image}

@@ -36,7 +36,7 @@ const Qualifications = () => {
 
     return (
         <motion.section
-            className="w-full pb-[14vh] min-[1024px]:min-h-[78vh]"
+            className="pt-[15vh] w-full pb-[14vh] min-[1024px]:min-h-[78vh]"
             id="qualifications"
             variants={sectionReveal}
             initial="hidden"
@@ -46,7 +46,7 @@ const Qualifications = () => {
             <SectionHeading
                 title="Qualifications"
                 kicker="Journey"
-                className="z-[1] mb-8 sm:mb-10"
+                className="z-[1] mb-8 mx-auto items-center text-center sm:mb-10"
             />
 
             <div className="mx-auto max-w-[1000px] px-1 sm:px-2 md:px-4">

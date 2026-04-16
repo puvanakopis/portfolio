@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-scroll';
+import { Link, animateScroll as scroll } from 'react-scroll';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
 import { navReveal } from '../utils/animations';
 
@@ -14,6 +14,14 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setIsOpen(false);
+  };
+
+  const scrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
+    closeMenu();
   };
 
   const handleSectionChange = useCallback((section) => {
@@ -56,16 +64,32 @@ const Navbar = () => {
       animate="show"
     >
       <div className="flex h-full w-full items-center justify-between">
-        <Motion.div
-          className={`text-[34px] font-extrabold text-[#4F4D4D] transition-all duration-300 sm:text-[38px] lg:text-[42px]`}
-          whileHover={{ scale: 1.03 }}
+        <div
+          onClick={scrollToTop}
+          className="cursor-pointer"
         >
-          Portfolio
-        </Motion.div>
+          <Motion.div
+            className={`text-[34px] font-extrabold text-[#4F4D4D] transition-all duration-300 sm:text-[38px] lg:text-[42px]`}
+            whileHover={{ scale: 1.03 }}
+          >
+            Portfolio
+          </Motion.div>
+        </div>
 
         {/* ------------ Desktop Navigation ------------ */}
         <div className="hidden gap-8 lg:flex xl:gap-10">
-
+          <div
+            onClick={scrollToTop}
+            className={navLinkClass}
+          >
+            Home
+            {activeSection === 'home' && (
+              <Motion.span
+                className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-[#4F4D4D]"
+                layoutId="activeNavLine"
+              />
+            )}
+          </div>
           <Link
             to="about"
             spy={true}
@@ -169,17 +193,12 @@ const Navbar = () => {
               exit={{ y: '-100%', opacity: 0 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link
-                to="home"
-                spy={true}
-                smooth={true}
-                duration={500}
+              <div
+                onClick={scrollToTop}
                 className={navLinkClass}
-                onClick={closeMenu}
-                onSetActive={() => handleSectionChange('home')}
               >
                 Home
-              </Link>
+              </div>
               <Link
                 to="about"
                 spy={true}

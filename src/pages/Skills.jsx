@@ -37,14 +37,15 @@ const Skills = () => {
     ];
 
     return (
-        <section className="relative flex w-full flex-col pb-[20vh] min-[1024px]:min-h-[85vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="skills">
+        <section className="relative pt-[15vh] flex w-full flex-col pb-[20vh] min-[1024px]:min-h-[85vh] max-[600px]:pb-[15vh] max-[480px]:pb-[12vh]" id="skills">
             <SectionHeading
                 title="My Skills"
                 kicker="Capabilities"
+                className="mx-auto items-center text-center"
             />
 
             <motion.div
-                className=" flex flex-col items-center justify-center gap-12  pt-[10vh] max-lg:gap-8 max-lg:pt-[8vh] max-md:pt-[6vh] max-[600px]:pt-[5vh] max-[480px]:gap-6 max-[480px]:pt-[4vh]"
+                className="flex flex-col items-center justify-center gap-10 pt-[4vh] max-lg:gap-7 max-lg:pt-[3vh] max-md:pt-[2.5vh] max-[600px]:pt-[2vh] max-[480px]:gap-5 max-[480px]:pt-[1.5vh]"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="show"
